@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  WhatsNow
+
+  Created by David Buhauer on 16/09/2018.
+  Copyright © 2018 Dabdeveloper. All rights reserved.
+*/
+
+"free" = "Gratis";
+"ticket_master_eventbrite" = "hos EventBrite";
