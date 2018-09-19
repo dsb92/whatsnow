@@ -7,21 +7,98 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4601DC42214EA55700DE7CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC41214EA55700DE7CCC /* AppDelegate.swift */; };
-		4601DC44214EA55700DE7CCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC43214EA55700DE7CCC /* ViewController.swift */; };
-		4601DC47214EA55700DE7CCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4601DC45214EA55700DE7CCC /* Main.storyboard */; };
+		4601DC42214EA55700DE7CCC /* WNAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC41214EA55700DE7CCC /* WNAppDelegate.swift */; };
 		4601DC49214EA55800DE7CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4601DC48214EA55800DE7CCC /* Assets.xcassets */; };
 		4601DC4C214EA55800DE7CCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4601DC4A214EA55800DE7CCC /* LaunchScreen.storyboard */; };
+		4601DC60214EA67500DE7CCC /* WNAugmentedLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC59214EA67500DE7CCC /* WNAugmentedLocation.swift */; };
+		4601DC61214EA67500DE7CCC /* WNDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC5A214EA67500DE7CCC /* WNDescription.swift */; };
+		4601DC62214EA67500DE7CCC /* WNEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC5B214EA67500DE7CCC /* WNEnd.swift */; };
+		4601DC63214EA67500DE7CCC /* WNEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC5C214EA67500DE7CCC /* WNEvent.swift */; };
+		4601DC64214EA67500DE7CCC /* WNEventsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC5D214EA67500DE7CCC /* WNEventsParser.swift */; };
+		4601DC65214EA67500DE7CCC /* WNLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC5E214EA67500DE7CCC /* WNLocation.swift */; };
+		4601DC66214EA67500DE7CCC /* WNPagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC5F214EA67500DE7CCC /* WNPagination.swift */; };
+		4601DC6A214EA77C00DE7CCC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4601DC6C214EA77C00DE7CCC /* Localizable.strings */; };
+		4601DC71214EA7B800DE7CCC /* WNDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC70214EA7B800DE7CCC /* WNDataController.swift */; };
+		4601DC74214EA7DB00DE7CCC /* WNBaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC73214EA7DB00DE7CCC /* WNBaseVC.swift */; };
+		4601DC78214EA82500DE7CCC /* WNEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC76214EA82500DE7CCC /* WNEventsVC.swift */; };
+		4601DC79214EA82500DE7CCC /* WNEventsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4601DC77214EA82500DE7CCC /* WNEventsVC.xib */; };
+		4601DC7C214EA98300DE7CCC /* WNCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC7B214EA98300DE7CCC /* WNCardView.swift */; };
+		4601DC80214EA9F800DE7CCC /* WNEventDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC7E214EA9F800DE7CCC /* WNEventDetailVC.swift */; };
+		4601DC81214EA9F800DE7CCC /* WNEventDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4601DC7F214EA9F800DE7CCC /* WNEventDetailVC.xib */; };
+		4601DC84214EAD8D00DE7CCC /* WNEventsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC83214EAD8D00DE7CCC /* WNEventsCollectionView.swift */; };
+		4601DC8C214EAE4200DE7CCC /* WNEventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC8A214EAE4200DE7CCC /* WNEventCollectionViewCell.swift */; };
+		4601DC8D214EAE4200DE7CCC /* WNEventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4601DC8B214EAE4200DE7CCC /* WNEventCollectionViewCell.xib */; };
+		4601DC91214EBD2700DE7CCC /* WNRoundedCardWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC90214EBD2700DE7CCC /* WNRoundedCardWrapperView.swift */; };
+		4601DC99214EDE8A00DE7CCC /* WNLogoParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC94214EDE8900DE7CCC /* WNLogoParser.swift */; };
+		4601DC9A214EDE8A00DE7CCC /* WNLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC95214EDE8900DE7CCC /* WNLogo.swift */; };
+		4601DC9B214EDE8A00DE7CCC /* WNOriginal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC96214EDE8900DE7CCC /* WNOriginal.swift */; };
+		4601DC9C214EDE8A00DE7CCC /* WNCropMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC97214EDE8A00DE7CCC /* WNCropMask.swift */; };
+		4601DC9D214EDE8A00DE7CCC /* WNTopLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC98214EDE8A00DE7CCC /* WNTopLeft.swift */; };
+		4601DCA0214EE27200DE7CCC /* WNExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4601DC9F214EE27200DE7CCC /* WNExtensions.swift */; };
+		4603C54E215032C200C23E7A /* WNTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4603C54D215032C200C23E7A /* WNTabBarController.swift */; };
+		4603C5522150352E00C23E7A /* WNSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4603C5502150352E00C23E7A /* WNSearchVC.swift */; };
+		4603C5532150352E00C23E7A /* WNSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4603C5512150352E00C23E7A /* WNSearchVC.xib */; };
+		4603C557215035B900C23E7A /* WNNearMeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4603C555215035B900C23E7A /* WNNearMeVC.swift */; };
+		4603C558215035B900C23E7A /* WNNearMeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4603C556215035B900C23E7A /* WNNearMeVC.xib */; };
+		4603C55C2150360C00C23E7A /* WNFavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4603C55A2150360C00C23E7A /* WNFavoritesVC.swift */; };
+		4603C55D2150360C00C23E7A /* WNFavoritesVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4603C55B2150360C00C23E7A /* WNFavoritesVC.xib */; };
+		4603C5612150365500C23E7A /* WNProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4603C55F2150365500C23E7A /* WNProfileVC.swift */; };
+		4603C5622150365500C23E7A /* WNProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4603C5602150365500C23E7A /* WNProfileVC.xib */; };
+		4631AF782152C90B00D5D542 /* WNOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF772152C90A00D5D542 /* WNOrganizer.swift */; };
+		4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF792152CB6A00D5D542 /* WNAddres.swift */; };
+		4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF7A2152CB6B00D5D542 /* WNVenue.swift */; };
+		4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF812152D83900D5D542 /* WNFormatUtil.swift */; };
+		A76E7357D3C08CFC5AF25E83 /* Pods_WhatsNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1B32F19BFD054333F03520 /* Pods_WhatsNow.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31AE4D75DB2F3FFCC8F22EA3 /* Pods-WhatsNow.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsNow.release.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsNow/Pods-WhatsNow.release.xcconfig"; sourceTree = "<group>"; };
+		3F1B32F19BFD054333F03520 /* Pods_WhatsNow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatsNow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4601DC3E214EA55700DE7CCC /* WhatsNow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		4601DC41214EA55700DE7CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4601DC43214EA55700DE7CCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4601DC46214EA55700DE7CCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4601DC41214EA55700DE7CCC /* WNAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNAppDelegate.swift; sourceTree = "<group>"; };
 		4601DC48214EA55800DE7CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4601DC4B214EA55800DE7CCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4601DC4D214EA55800DE7CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4601DC59214EA67500DE7CCC /* WNAugmentedLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNAugmentedLocation.swift; sourceTree = "<group>"; };
+		4601DC5A214EA67500DE7CCC /* WNDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNDescription.swift; sourceTree = "<group>"; };
+		4601DC5B214EA67500DE7CCC /* WNEnd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNEnd.swift; sourceTree = "<group>"; };
+		4601DC5C214EA67500DE7CCC /* WNEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNEvent.swift; sourceTree = "<group>"; };
+		4601DC5D214EA67500DE7CCC /* WNEventsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNEventsParser.swift; sourceTree = "<group>"; };
+		4601DC5E214EA67500DE7CCC /* WNLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNLocation.swift; sourceTree = "<group>"; };
+		4601DC5F214EA67500DE7CCC /* WNPagination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNPagination.swift; sourceTree = "<group>"; };
+		4601DC6B214EA77C00DE7CCC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4601DC6D214EA77E00DE7CCC /* da */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = da; path = da.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4601DC70214EA7B800DE7CCC /* WNDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNDataController.swift; sourceTree = "<group>"; };
+		4601DC73214EA7DB00DE7CCC /* WNBaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNBaseVC.swift; sourceTree = "<group>"; };
+		4601DC76214EA82500DE7CCC /* WNEventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventsVC.swift; sourceTree = "<group>"; };
+		4601DC77214EA82500DE7CCC /* WNEventsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNEventsVC.xib; sourceTree = "<group>"; };
+		4601DC7B214EA98300DE7CCC /* WNCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNCardView.swift; sourceTree = "<group>"; };
+		4601DC7E214EA9F800DE7CCC /* WNEventDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventDetailVC.swift; sourceTree = "<group>"; };
+		4601DC7F214EA9F800DE7CCC /* WNEventDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNEventDetailVC.xib; sourceTree = "<group>"; };
+		4601DC83214EAD8D00DE7CCC /* WNEventsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventsCollectionView.swift; sourceTree = "<group>"; };
+		4601DC8A214EAE4200DE7CCC /* WNEventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventCollectionViewCell.swift; sourceTree = "<group>"; };
+		4601DC8B214EAE4200DE7CCC /* WNEventCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNEventCollectionViewCell.xib; sourceTree = "<group>"; };
+		4601DC90214EBD2700DE7CCC /* WNRoundedCardWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNRoundedCardWrapperView.swift; sourceTree = "<group>"; };
+		4601DC94214EDE8900DE7CCC /* WNLogoParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNLogoParser.swift; sourceTree = "<group>"; };
+		4601DC95214EDE8900DE7CCC /* WNLogo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNLogo.swift; sourceTree = "<group>"; };
+		4601DC96214EDE8900DE7CCC /* WNOriginal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNOriginal.swift; sourceTree = "<group>"; };
+		4601DC97214EDE8A00DE7CCC /* WNCropMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNCropMask.swift; sourceTree = "<group>"; };
+		4601DC98214EDE8A00DE7CCC /* WNTopLeft.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNTopLeft.swift; sourceTree = "<group>"; };
+		4601DC9F214EE27200DE7CCC /* WNExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNExtensions.swift; sourceTree = "<group>"; };
+		4603C54D215032C200C23E7A /* WNTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNTabBarController.swift; sourceTree = "<group>"; };
+		4603C5502150352E00C23E7A /* WNSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNSearchVC.swift; sourceTree = "<group>"; };
+		4603C5512150352E00C23E7A /* WNSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNSearchVC.xib; sourceTree = "<group>"; };
+		4603C555215035B900C23E7A /* WNNearMeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNNearMeVC.swift; sourceTree = "<group>"; };
+		4603C556215035B900C23E7A /* WNNearMeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNNearMeVC.xib; sourceTree = "<group>"; };
+		4603C55A2150360C00C23E7A /* WNFavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNFavoritesVC.swift; sourceTree = "<group>"; };
+		4603C55B2150360C00C23E7A /* WNFavoritesVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNFavoritesVC.xib; sourceTree = "<group>"; };
+		4603C55F2150365500C23E7A /* WNProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNProfileVC.swift; sourceTree = "<group>"; };
+		4603C5602150365500C23E7A /* WNProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNProfileVC.xib; sourceTree = "<group>"; };
+		4631AF772152C90A00D5D542 /* WNOrganizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNOrganizer.swift; sourceTree = "<group>"; };
+		4631AF792152CB6A00D5D542 /* WNAddres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNAddres.swift; sourceTree = "<group>"; };
+		4631AF7A2152CB6B00D5D542 /* WNVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNVenue.swift; sourceTree = "<group>"; };
+		4631AF812152D83900D5D542 /* WNFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNFormatUtil.swift; sourceTree = "<group>"; };
+		5F5588304F15574152B708B2 /* Pods-WhatsNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsNow/Pods-WhatsNow.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +106,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76E7357D3C08CFC5AF25E83 /* Pods_WhatsNow.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2083AA0F9121616EB0A40109 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F1B32F19BFD054333F03520 /* Pods_WhatsNow.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4601DC35214EA55700DE7CCC = {
 			isa = PBXGroup;
 			children = (
 				4601DC40214EA55700DE7CCC /* WhatsNow */,
 				4601DC3F214EA55700DE7CCC /* Products */,
+				EF0728A0E5CCD45FB4B57F32 /* Pods */,
+				2083AA0F9121616EB0A40109 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +142,211 @@
 		4601DC40214EA55700DE7CCC /* WhatsNow */ = {
 			isa = PBXGroup;
 			children = (
-				4601DC41214EA55700DE7CCC /* AppDelegate.swift */,
-				4601DC43214EA55700DE7CCC /* ViewController.swift */,
-				4601DC45214EA55700DE7CCC /* Main.storyboard */,
+				4601DC9E214EE25F00DE7CCC /* Extensions */,
+				4601DC6E214EA7A100DE7CCC /* Controllers */,
+				4601DC56214EA61A00DE7CCC /* Utils */,
+				4601DC55214EA61500DE7CCC /* CustomViews */,
+				4601DC54214EA61100DE7CCC /* VCs */,
+				4601DC53214EA60C00DE7CCC /* Model */,
+				4601DC41214EA55700DE7CCC /* WNAppDelegate.swift */,
 				4601DC48214EA55800DE7CCC /* Assets.xcassets */,
 				4601DC4A214EA55800DE7CCC /* LaunchScreen.storyboard */,
 				4601DC4D214EA55800DE7CCC /* Info.plist */,
+				4601DC6C214EA77C00DE7CCC /* Localizable.strings */,
+				4603C54D215032C200C23E7A /* WNTabBarController.swift */,
 			);
 			path = WhatsNow;
+			sourceTree = "<group>";
+		};
+		4601DC53214EA60C00DE7CCC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC57214EA67500DE7CCC /* AutoGenerated */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4601DC54214EA61100DE7CCC /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				4603C55E2150364600C23E7A /* Profile */,
+				4603C559215035FA00C23E7A /* Favorites */,
+				4603C554215035A000C23E7A /* NearMe */,
+				4603C54F2150351600C23E7A /* Search */,
+				4601DC7D214EA9DE00DE7CCC /* EventDetail */,
+				4601DC75214EA80300DE7CCC /* Events */,
+				4601DC72214EA7CD00DE7CCC /* Base */,
+			);
+			path = VCs;
+			sourceTree = "<group>";
+		};
+		4601DC55214EA61500DE7CCC /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC82214EAD7600DE7CCC /* CollectionViews */,
+				4601DC7A214EA96D00DE7CCC /* EventCard */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		4601DC56214EA61A00DE7CCC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4631AF812152D83900D5D542 /* WNFormatUtil.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		4601DC57214EA67500DE7CCC /* AutoGenerated */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC58214EA67500DE7CCC /* Events */,
+			);
+			path = AutoGenerated;
+			sourceTree = "<group>";
+		};
+		4601DC58214EA67500DE7CCC /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4631AF792152CB6A00D5D542 /* WNAddres.swift */,
+				4631AF7A2152CB6B00D5D542 /* WNVenue.swift */,
+				4631AF772152C90A00D5D542 /* WNOrganizer.swift */,
+				4601DC97214EDE8A00DE7CCC /* WNCropMask.swift */,
+				4601DC95214EDE8900DE7CCC /* WNLogo.swift */,
+				4601DC94214EDE8900DE7CCC /* WNLogoParser.swift */,
+				4601DC96214EDE8900DE7CCC /* WNOriginal.swift */,
+				4601DC98214EDE8A00DE7CCC /* WNTopLeft.swift */,
+				4601DC59214EA67500DE7CCC /* WNAugmentedLocation.swift */,
+				4601DC5A214EA67500DE7CCC /* WNDescription.swift */,
+				4601DC5B214EA67500DE7CCC /* WNEnd.swift */,
+				4601DC5C214EA67500DE7CCC /* WNEvent.swift */,
+				4601DC5D214EA67500DE7CCC /* WNEventsParser.swift */,
+				4601DC5E214EA67500DE7CCC /* WNLocation.swift */,
+				4601DC5F214EA67500DE7CCC /* WNPagination.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4601DC6E214EA7A100DE7CCC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC6F214EA7A700DE7CCC /* Data */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4601DC6F214EA7A700DE7CCC /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC70214EA7B800DE7CCC /* WNDataController.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4601DC72214EA7CD00DE7CCC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC73214EA7DB00DE7CCC /* WNBaseVC.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		4601DC75214EA80300DE7CCC /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC89214EADEB00DE7CCC /* Cells */,
+				4601DC76214EA82500DE7CCC /* WNEventsVC.swift */,
+				4601DC77214EA82500DE7CCC /* WNEventsVC.xib */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		4601DC7A214EA96D00DE7CCC /* EventCard */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC7B214EA98300DE7CCC /* WNCardView.swift */,
+				4601DC90214EBD2700DE7CCC /* WNRoundedCardWrapperView.swift */,
+			);
+			path = EventCard;
+			sourceTree = "<group>";
+		};
+		4601DC7D214EA9DE00DE7CCC /* EventDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC7E214EA9F800DE7CCC /* WNEventDetailVC.swift */,
+				4601DC7F214EA9F800DE7CCC /* WNEventDetailVC.xib */,
+			);
+			path = EventDetail;
+			sourceTree = "<group>";
+		};
+		4601DC82214EAD7600DE7CCC /* CollectionViews */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC83214EAD8D00DE7CCC /* WNEventsCollectionView.swift */,
+			);
+			path = CollectionViews;
+			sourceTree = "<group>";
+		};
+		4601DC89214EADEB00DE7CCC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC8A214EAE4200DE7CCC /* WNEventCollectionViewCell.swift */,
+				4601DC8B214EAE4200DE7CCC /* WNEventCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4601DC9E214EE25F00DE7CCC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4601DC9F214EE27200DE7CCC /* WNExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4603C54F2150351600C23E7A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				4603C5502150352E00C23E7A /* WNSearchVC.swift */,
+				4603C5512150352E00C23E7A /* WNSearchVC.xib */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		4603C554215035A000C23E7A /* NearMe */ = {
+			isa = PBXGroup;
+			children = (
+				4603C555215035B900C23E7A /* WNNearMeVC.swift */,
+				4603C556215035B900C23E7A /* WNNearMeVC.xib */,
+			);
+			path = NearMe;
+			sourceTree = "<group>";
+		};
+		4603C559215035FA00C23E7A /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				4603C55A2150360C00C23E7A /* WNFavoritesVC.swift */,
+				4603C55B2150360C00C23E7A /* WNFavoritesVC.xib */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		4603C55E2150364600C23E7A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4603C55F2150365500C23E7A /* WNProfileVC.swift */,
+				4603C5602150365500C23E7A /* WNProfileVC.xib */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EF0728A0E5CCD45FB4B57F32 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F5588304F15574152B708B2 /* Pods-WhatsNow.debug.xcconfig */,
+				31AE4D75DB2F3FFCC8F22EA3 /* Pods-WhatsNow.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +356,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4601DC50214EA55800DE7CCC /* Build configuration list for PBXNativeTarget "WhatsNow" */;
 			buildPhases = (
+				3465301522E86109417F4BAB /* [CP] Check Pods Manifest.lock */,
 				4601DC3A214EA55700DE7CCC /* Sources */,
 				4601DC3B214EA55700DE7CCC /* Frameworks */,
 				4601DC3C214EA55700DE7CCC /* Resources */,
+				DFED292A1F7F4C64FCED264A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -90,6 +377,7 @@
 		4601DC36214EA55700DE7CCC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WN;
 				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = Dabdeveloper;
@@ -106,6 +394,7 @@
 			knownRegions = (
 				en,
 				Base,
+				da,
 			);
 			mainGroup = 4601DC35214EA55700DE7CCC;
 			productRefGroup = 4601DC3F214EA55700DE7CCC /* Products */;
@@ -123,40 +412,128 @@
 			buildActionMask = 2147483647;
 			files = (
 				4601DC4C214EA55800DE7CCC /* LaunchScreen.storyboard in Resources */,
+				4603C55D2150360C00C23E7A /* WNFavoritesVC.xib in Resources */,
+				4601DC81214EA9F800DE7CCC /* WNEventDetailVC.xib in Resources */,
+				4603C5622150365500C23E7A /* WNProfileVC.xib in Resources */,
+				4603C5532150352E00C23E7A /* WNSearchVC.xib in Resources */,
+				4601DC8D214EAE4200DE7CCC /* WNEventCollectionViewCell.xib in Resources */,
+				4601DC6A214EA77C00DE7CCC /* Localizable.strings in Resources */,
+				4603C558215035B900C23E7A /* WNNearMeVC.xib in Resources */,
+				4601DC79214EA82500DE7CCC /* WNEventsVC.xib in Resources */,
 				4601DC49214EA55800DE7CCC /* Assets.xcassets in Resources */,
-				4601DC47214EA55700DE7CCC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3465301522E86109417F4BAB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatsNow-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DFED292A1F7F4C64FCED264A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WhatsNow/Pods-WhatsNow-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/CollectionKit/CollectionKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollectionKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WhatsNow/Pods-WhatsNow-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4601DC3A214EA55700DE7CCC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4601DC44214EA55700DE7CCC /* ViewController.swift in Sources */,
-				4601DC42214EA55700DE7CCC /* AppDelegate.swift in Sources */,
+				4601DC74214EA7DB00DE7CCC /* WNBaseVC.swift in Sources */,
+				4601DC64214EA67500DE7CCC /* WNEventsParser.swift in Sources */,
+				4631AF782152C90B00D5D542 /* WNOrganizer.swift in Sources */,
+				4601DCA0214EE27200DE7CCC /* WNExtensions.swift in Sources */,
+				4601DC61214EA67500DE7CCC /* WNDescription.swift in Sources */,
+				4601DC9A214EDE8A00DE7CCC /* WNLogo.swift in Sources */,
+				4601DC9C214EDE8A00DE7CCC /* WNCropMask.swift in Sources */,
+				4603C557215035B900C23E7A /* WNNearMeVC.swift in Sources */,
+				4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */,
+				4601DC9D214EDE8A00DE7CCC /* WNTopLeft.swift in Sources */,
+				4601DC80214EA9F800DE7CCC /* WNEventDetailVC.swift in Sources */,
+				4601DC9B214EDE8A00DE7CCC /* WNOriginal.swift in Sources */,
+				4601DC8C214EAE4200DE7CCC /* WNEventCollectionViewCell.swift in Sources */,
+				4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */,
+				4601DC91214EBD2700DE7CCC /* WNRoundedCardWrapperView.swift in Sources */,
+				4601DC63214EA67500DE7CCC /* WNEvent.swift in Sources */,
+				4601DC60214EA67500DE7CCC /* WNAugmentedLocation.swift in Sources */,
+				4601DC84214EAD8D00DE7CCC /* WNEventsCollectionView.swift in Sources */,
+				4603C54E215032C200C23E7A /* WNTabBarController.swift in Sources */,
+				4601DC78214EA82500DE7CCC /* WNEventsVC.swift in Sources */,
+				4601DC66214EA67500DE7CCC /* WNPagination.swift in Sources */,
+				4601DC62214EA67500DE7CCC /* WNEnd.swift in Sources */,
+				4601DC7C214EA98300DE7CCC /* WNCardView.swift in Sources */,
+				4601DC42214EA55700DE7CCC /* WNAppDelegate.swift in Sources */,
+				4601DC71214EA7B800DE7CCC /* WNDataController.swift in Sources */,
+				4601DC65214EA67500DE7CCC /* WNLocation.swift in Sources */,
+				4603C55C2150360C00C23E7A /* WNFavoritesVC.swift in Sources */,
+				4601DC99214EDE8A00DE7CCC /* WNLogoParser.swift in Sources */,
+				4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */,
+				4603C5612150365500C23E7A /* WNProfileVC.swift in Sources */,
+				4603C5522150352E00C23E7A /* WNSearchVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4601DC45214EA55700DE7CCC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4601DC46214EA55700DE7CCC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4601DC4A214EA55800DE7CCC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				4601DC4B214EA55800DE7CCC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4601DC6C214EA77C00DE7CCC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4601DC6B214EA77C00DE7CCC /* en */,
+				4601DC6D214EA77E00DE7CCC /* da */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -166,6 +543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -226,6 +604,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -278,6 +657,7 @@
 		};
 		4601DC51214EA55800DE7CCC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F5588304F15574152B708B2 /* Pods-WhatsNow.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -290,12 +670,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dabdeveloper.WhatsNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		4601DC52214EA55800DE7CCC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31AE4D75DB2F3FFCC8F22EA3 /* Pods-WhatsNow.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -308,7 +689,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.dabdeveloper.WhatsNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
