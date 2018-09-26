@@ -36,6 +36,14 @@ class WNFormatUtil {
         return ""
     }
     
+    static func date(fromDateString dateString: String) -> Date {
+        if let date: Date = self.dateFormatter().date(from: dateString) {
+            return date
+        }
+        
+        return Date()
+    }
+    
     private static func dateFormatter() -> DateFormatter{
         let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"

@@ -48,6 +48,11 @@
 		4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF792152CB6A00D5D542 /* WNAddres.swift */; };
 		4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF7A2152CB6B00D5D542 /* WNVenue.swift */; };
 		4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF812152D83900D5D542 /* WNFormatUtil.swift */; };
+		46B2E5EF215BF8E100F81537 /* WNReadMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */; };
+		46B2E5F0215BF8E100F81537 /* WNReadMoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */; };
+		46B2E5F8215C06EA00F81537 /* WNEventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */; };
+		46B2E5F9215C06EA00F81537 /* WNEventHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B2E5F7215C06EA00F81537 /* WNEventHeaderView.xib */; };
+		46B2E5FF215C1AE800F81537 /* WNLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5FE215C1AE800F81537 /* WNLocationController.swift */; };
 		A76E7357D3C08CFC5AF25E83 /* Pods_WhatsNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1B32F19BFD054333F03520 /* Pods_WhatsNow.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +103,11 @@
 		4631AF792152CB6A00D5D542 /* WNAddres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNAddres.swift; sourceTree = "<group>"; };
 		4631AF7A2152CB6B00D5D542 /* WNVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNVenue.swift; sourceTree = "<group>"; };
 		4631AF812152D83900D5D542 /* WNFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNFormatUtil.swift; sourceTree = "<group>"; };
+		46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNReadMoreVC.swift; sourceTree = "<group>"; };
+		46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNReadMoreVC.xib; sourceTree = "<group>"; };
+		46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventHeaderView.swift; sourceTree = "<group>"; };
+		46B2E5F7215C06EA00F81537 /* WNEventHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNEventHeaderView.xib; sourceTree = "<group>"; };
+		46B2E5FE215C1AE800F81537 /* WNLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNLocationController.swift; sourceTree = "<group>"; };
 		5F5588304F15574152B708B2 /* Pods-WhatsNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsNow/Pods-WhatsNow.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,11 +159,11 @@
 				4601DC54214EA61100DE7CCC /* VCs */,
 				4601DC53214EA60C00DE7CCC /* Model */,
 				4601DC41214EA55700DE7CCC /* WNAppDelegate.swift */,
+				4603C54D215032C200C23E7A /* WNTabBarController.swift */,
 				4601DC48214EA55800DE7CCC /* Assets.xcassets */,
 				4601DC4A214EA55800DE7CCC /* LaunchScreen.storyboard */,
 				4601DC4D214EA55800DE7CCC /* Info.plist */,
 				4601DC6C214EA77C00DE7CCC /* Localizable.strings */,
-				4603C54D215032C200C23E7A /* WNTabBarController.swift */,
 			);
 			path = WhatsNow;
 			sourceTree = "<group>";
@@ -230,6 +240,7 @@
 		4601DC6E214EA7A100DE7CCC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				46B2E5FD215C1AD400F81537 /* Location */,
 				4601DC6F214EA7A700DE7CCC /* Data */,
 			);
 			path = Controllers;
@@ -275,6 +286,8 @@
 			children = (
 				4601DC7E214EA9F800DE7CCC /* WNEventDetailVC.swift */,
 				4601DC7F214EA9F800DE7CCC /* WNEventDetailVC.xib */,
+				46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */,
+				46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */,
 			);
 			path = EventDetail;
 			sourceTree = "<group>";
@@ -282,6 +295,7 @@
 		4601DC82214EAD7600DE7CCC /* CollectionViews */ = {
 			isa = PBXGroup;
 			children = (
+				46B2E5F5215C069700F81537 /* Cells */,
 				4601DC83214EAD8D00DE7CCC /* WNEventsCollectionView.swift */,
 			);
 			path = CollectionViews;
@@ -338,6 +352,23 @@
 				4603C5602150365500C23E7A /* WNProfileVC.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		46B2E5F5215C069700F81537 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */,
+				46B2E5F7215C06EA00F81537 /* WNEventHeaderView.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		46B2E5FD215C1AD400F81537 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				46B2E5FE215C1AE800F81537 /* WNLocationController.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		EF0728A0E5CCD45FB4B57F32 /* Pods */ = {
@@ -412,10 +443,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4601DC4C214EA55800DE7CCC /* LaunchScreen.storyboard in Resources */,
+				46B2E5F9215C06EA00F81537 /* WNEventHeaderView.xib in Resources */,
 				4603C55D2150360C00C23E7A /* WNFavoritesVC.xib in Resources */,
 				4601DC81214EA9F800DE7CCC /* WNEventDetailVC.xib in Resources */,
 				4603C5622150365500C23E7A /* WNProfileVC.xib in Resources */,
 				4603C5532150352E00C23E7A /* WNSearchVC.xib in Resources */,
+				46B2E5F0215BF8E100F81537 /* WNReadMoreVC.xib in Resources */,
 				4601DC8D214EAE4200DE7CCC /* WNEventCollectionViewCell.xib in Resources */,
 				4601DC6A214EA77C00DE7CCC /* Localizable.strings in Resources */,
 				4603C558215035B900C23E7A /* WNNearMeVC.xib in Resources */,
@@ -499,7 +532,9 @@
 				4601DC91214EBD2700DE7CCC /* WNRoundedCardWrapperView.swift in Sources */,
 				4601DC63214EA67500DE7CCC /* WNEvent.swift in Sources */,
 				4601DC60214EA67500DE7CCC /* WNAugmentedLocation.swift in Sources */,
+				46B2E5F8215C06EA00F81537 /* WNEventHeaderView.swift in Sources */,
 				4601DC84214EAD8D00DE7CCC /* WNEventsCollectionView.swift in Sources */,
+				46B2E5FF215C1AE800F81537 /* WNLocationController.swift in Sources */,
 				4603C54E215032C200C23E7A /* WNTabBarController.swift in Sources */,
 				4601DC78214EA82500DE7CCC /* WNEventsVC.swift in Sources */,
 				4601DC66214EA67500DE7CCC /* WNPagination.swift in Sources */,
@@ -508,6 +543,7 @@
 				4601DC42214EA55700DE7CCC /* WNAppDelegate.swift in Sources */,
 				4601DC71214EA7B800DE7CCC /* WNDataController.swift in Sources */,
 				4601DC65214EA67500DE7CCC /* WNLocation.swift in Sources */,
+				46B2E5EF215BF8E100F81537 /* WNReadMoreVC.swift in Sources */,
 				4603C55C2150360C00C23E7A /* WNFavoritesVC.swift in Sources */,
 				4601DC99214EDE8A00DE7CCC /* WNLogoParser.swift in Sources */,
 				4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */,

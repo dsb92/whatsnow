@@ -10,13 +10,14 @@ import UIKit
 import Hero
 
 class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelegate {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     @IBOutlet weak var cardView: WNCardView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var practicalInfoView: UIView!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var readMoreButton: UIButton!
     
     @IBOutlet weak var calendarIcon: UIImageView!
     @IBOutlet weak var locationIcon: UIImageView!
@@ -32,7 +33,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     
     @IBOutlet weak var ticketLabel: UILabel!
     @IBOutlet weak var ticketMasterLabel: UILabel!
-
+    
     let closeButton: UIButton = UIButton(type: .custom)
     
     var event: WNEvent?
@@ -41,17 +42,12 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         super.viewDidLoad()
         
         self.setupHero()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        view.backgroundColor = .clear
-        
-        self.setupUI()
-
-        view.addSubview(closeButton)
-        
-        // add a pan gesture recognizer for the interactive dismiss transition
-        let panGesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gr:)))
-        panGesture.delegate = self
-        self.view.addGestureRecognizer(panGesture)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,13 +73,24 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.visualEffectView.hero.modifiers = [.fade, .useNoSnapshot]
     }
     
-    private func setupUI() {
+    override func setupUI() {
+        super.setupUI()
+        
+        self.view.backgroundColor = .clear
+        
+        self.view.addSubview(closeButton)
+        
+        // add a pan gesture recognizer for the interactive dismiss transition
+        let panGesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gr:)))
+        panGesture.delegate = self
+        self.view.addGestureRecognizer(panGesture)
+        
         guard let event: WNEvent = event else { return }
         
-        cardView.titleLabel.text = event.name?.text
-        cardView.subtitleLabel.text = event.organizer?.name
+        self.cardView.titleLabel.text = event.name?.text
+        self.cardView.subtitleLabel.text = event.organizer?.name
         if let imageUrl: URL = URL(string: event.logo?.original?.url ?? "") {
-            cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)
+            self.cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)
         }
         
         self.calendarIcon.image = #imageLiteral(resourceName: "icon_calender_black")
@@ -120,8 +127,13 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.textView.textContainerInset = .zero
         self.textView.textContainer.lineFragmentPadding = 0
         self.textView.attributedText = event.descriptionField?.html?.htmlAttributedContent(withFont: UIFont.systemFont(ofSize: 16), andColor: .black)
+        self.textView.textContainer.maximumNumberOfLines = 10;
+        self.textView.textContainer.lineBreakMode = .byTruncatingTail
         self.textView.sizeToContent()
         self.textView.layoutIfNeeded()
+        
+        self.readMoreButton.setTitle("read_more_button".localized, for: .normal)
+        self.readMoreButton.titleLabel?.text = "read_more_button"
         
         self.scrollView.backgroundColor = .white
         self.scrollView.clipsToBounds = true
@@ -148,17 +160,37 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.visualEffectView.frame  = bounds
         self.scrollView.frame  = bounds
         
-        self.cardView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.width)
+        var outerYOffset: CGFloat = 0
+        var contentYOffset: CGFloat = 0
         
-        self.textView.frame = CGRect(x: 20, y: self.practicalInfoView.bounds.size.height + 20, width: bounds.width - 40, height: textView.bounds.size.height)
+        self.cardView.frame = CGRect(x: 0, y: outerYOffset, width: bounds.width, height: bounds.width)
         
-        self.practicalInfoView.frame = CGRect(x: 0, y: self.contentView.bounds.origin.y + 20, width: self.contentView.bounds.size.width, height: 240)
+        outerYOffset += self.cardView.bounds.size.height
         
-        self.contentView.frame = CGRect(x: 0, y: self.cardView.bounds.size.height, width: bounds.width, height: self.practicalInfoView.bounds.size.height + self.textView.frame.size.height)
+        // Content here
+        contentYOffset += 20
         
-        self.scrollView.contentSize = CGSize(width: bounds.width, height: self.cardView.bounds.size.height + self.contentView.bounds.size.height)
+        // Practical info
+        self.practicalInfoView.frame = CGRect(x: 0, y: contentYOffset, width: self.contentView.bounds.size.width, height: 240)
         
-        closeButton.layer.cornerRadius = closeButton.bounds.size.width/2.0;
+        contentYOffset += self.practicalInfoView.bounds.size.height
+        
+        // Description
+        self.textView.frame = CGRect(x: 20, y: contentYOffset, width: bounds.width - 40, height: self.textView.bounds.size.height)
+        
+        contentYOffset += self.textView.bounds.size.height
+        
+        let textViewTruncated: Bool = self.textView.isTruncated()
+        self.readMoreButton.frame = CGRect(x: 20, y: contentYOffset, width: 100, height: textViewTruncated ? 50 : 0)
+        self.readMoreButton.isHidden = !textViewTruncated
+        
+        contentYOffset += self.readMoreButton.bounds.size.height
+    
+        self.contentView.frame = CGRect(x: 0, y: outerYOffset, width: bounds.width, height: contentYOffset)
+        
+        self.scrollView.contentSize = CGSize(width: bounds.width, height: outerYOffset + contentYOffset)
+        
+        self.closeButton.layer.cornerRadius = self.closeButton.bounds.size.width/2.0;
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -168,6 +200,13 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     // MARK: - Actions
     @objc func didTapCloseButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func didTapReadMoreButton(_ sender: UIButton) {
+        let readMoreVc: WNReadMoreVC = WNReadMoreVC()
+        readMoreVc.event = self.event
+        
+        self.navigationController?.pushViewController(readMoreVc, animated: true)
     }
     
     @objc func handlePan(gr: UIPanGestureRecognizer) {
@@ -206,7 +245,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
             
             print("scrollView: \(offset)")
             
-             scrollView.bounces = (scrollView.contentOffset.y > 0);
+            scrollView.bounces = (scrollView.contentOffset.y > 0);
         }
     }
     

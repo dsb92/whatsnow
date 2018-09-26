@@ -14,15 +14,18 @@ protocol WNEventsCollectionViewDelegate: class {
 }
 
 class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    var events: [WNEvent] = [WNEvent]() {
+
+    var events: [String: [WNEvent]] = [String: [WNEvent]]() {
         didSet {
             self.isHidden = self.events.isEmpty ? true : false
             self.reloadData()
         }
     }
     
+    var sortedKeys: [String] = [String]()
+    
     let EVENT_CELL_IDENTIFIER: String = String(describing: WNEventCollectionViewCell.self)
+    let EVENT_CELL_SECTION_HEADER_IDENTIFIER: String = String(describing: WNEventHeaderView.self)
     
     weak var eventsCollectionViewDelegate: WNEventsCollectionViewDelegate?
     
@@ -60,10 +63,29 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     
     private func registerCells() {
         self.register(UINib(nibName: self.EVENT_CELL_IDENTIFIER, bundle: nil), forCellWithReuseIdentifier: self.EVENT_CELL_IDENTIFIER)
+        self.register(UINib(nibName: self.EVENT_CELL_SECTION_HEADER_IDENTIFIER, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.EVENT_CELL_SECTION_HEADER_IDENTIFIER)
+    }
+    
+    private func event(forIndexPath indexPath: IndexPath) -> WNEvent? {
+        let key: String = self.sortedKeys[indexPath.section]
+        
+        guard let events: [WNEvent] = self.events[key] else { return nil }
+        
+        let event: WNEvent = events[indexPath.row]
+        
+        return event
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return self.sortedKeys.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.events.count
+        let key: String = self.sortedKeys[section]
+        
+        guard let events: [WNEvent] = self.events[key] else { return 0 }
+        
+        return events.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -74,11 +96,11 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 100, left: 20, bottom: 30, right: 20)
+        return UIEdgeInsets(top: 30, left: 20, bottom: 30, right: 20)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 30
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -90,21 +112,20 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
             return UICollectionViewCell()
         }
         
-        if self.events.count > indexPath.row {
-            let event: WNEvent = self.events[indexPath.row]
-            cell.cardView.cardView.titleLabel.text = event.name?.text
-            cell.cardView.cardView.subtitleLabel.text = event.organizer?.name
-            
-            if let imageUrl: URL = URL(string: event.logo?.original?.url ?? "") {
-                cell.cardView.cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)
-            }
+        guard let event: WNEvent = self.event(forIndexPath: indexPath) else { return cell }
+        
+        cell.cardView.cardView.titleLabel.text = event.name?.text
+        cell.cardView.cardView.subtitleLabel.text = event.organizer?.name
+        
+        if let imageUrl: URL = URL(string: event.logo?.original?.url ?? "") {
+            cell.cardView.cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)
         }
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let event: WNEvent = self.events[indexPath.row]
+        guard let event: WNEvent = self.event(forIndexPath: indexPath) else { return }
         
         if let cell: WNEventCollectionViewCell = self.cellForItem(at: indexPath) as? WNEventCollectionViewCell {
             let cardHeroId = "card\(event.id ?? "")"
@@ -114,5 +135,20 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
 
         self.eventsCollectionViewDelegate?.eventsCollectionViewDidSelectEvent(self, event: event)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let key: String = self.sortedKeys[indexPath.section]
+        
+        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: self.EVENT_CELL_SECTION_HEADER_IDENTIFIER, for: indexPath) as? WNEventHeaderView {
+            sectionHeader.sectionHeaderLabel.text = key.capitalizingFirstLetter()
+            return sectionHeader
+        }
+        return UICollectionReusableView()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: collectionView.bounds.size.width, height: 60)
+    }
 }
-

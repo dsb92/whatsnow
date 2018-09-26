@@ -13,21 +13,49 @@ class WNEventsVC: WNBaseVC {
     
     @IBOutlet weak var eventCollectionView: WNEventsCollectionView!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshCon:UIRefreshControl = UIRefreshControl()
+        refreshCon.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
+        return refreshCon
+    }()
+    
+    var cityForCurrentEvents: String = String() {
+        didSet {
+            self.title = self.cityForCurrentEvents
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Aarhus"
+        self.appDelegate.tabBarCon.delegate = self
         
         self.eventCollectionView.eventsCollectionViewDelegate = self
         self.eventCollectionView.delaysContentTouches = false
+        self.eventCollectionView.addSubview(self.refreshControl)
         
-        self.dataCon.fetchEvents(fromLocationAddress: "aarhus")
+        self.locCon.requestMyLocation()
+        self.locCon.delegate = self
     }
     
     override func assignDelegates() {
         super.assignDelegates()
         
         self.dataCon.eventsDelegate = self
+    }
+    
+    @objc func refreshData() {
+        self.dataCon.fetchEvents(fromLocationAddress: self.cityForCurrentEvents)
+    }
+}
+
+// MARK: - WNLocationControllerDelegate
+extension WNEventsVC: WNLocationControllerDelegate {
+    func locationControllerDidChangeCity(_ sender: WNLocationController, city: String) {
+        if city.lowercased() != self.cityForCurrentEvents.lowercased() {
+            self.dataCon.fetchEvents(fromLocationAddress: city)
+            self.cityForCurrentEvents = city
+        }
     }
 }
 
@@ -40,15 +68,59 @@ extension WNEventsVC: WNEventsCollectionViewDelegate {
         vc.hero.isEnabled = true
         vc.hero.modalAnimationType = .none
         
-        self.present(vc, animated: true, completion: nil)
+        let navCon: UINavigationController = UINavigationController(rootViewController: vc)
+        
+        navCon.hero.isEnabled = true
+        navCon.hero.modalAnimationType = .none
+        
+        self.present(navCon, animated: true, completion: nil)
     }
 }
 
 // MARK: - WNDataControllerEventsDelegate
 extension WNEventsVC: WNDataControllerEventsDelegate {
     func dataControllerDidFetchEvents(_ parser: WNEventsParser) {
+        self.refreshControl.endRefreshing()
+        
         guard let events: [WNEvent] = parser.events else { return }
         
-        self.eventCollectionView.events = events
+        var eventsDictionary: [String: [WNEvent]] = [String: [WNEvent]]()
+        var sortedKeys: [String] = [String]()
+        
+        for event in events {
+            if let start = event.start {
+                let eventDateString: String = WNFormatUtil.formatDate(start.utc ?? "")
+                if var originalEvents_ = eventsDictionary[eventDateString] {
+                    
+                    let exists = originalEvents_.first { $0.id?.lowercased() == event.id?.lowercased() }
+                    
+                    if exists == nil {
+                        originalEvents_.append(event)
+                    }
+                    
+                    eventsDictionary[eventDateString] = originalEvents_
+                } else {
+                    eventsDictionary[eventDateString] = [event]
+                }
+                
+                if !sortedKeys.contains(eventDateString) {
+                    sortedKeys.append(eventDateString)
+                }
+            }
+        }
+        
+        self.eventCollectionView.sortedKeys = sortedKeys
+        self.eventCollectionView.events = eventsDictionary
+    }
+}
+
+// MARK: - UITabBarControllerDelegate
+extension WNEventsVC: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        let tabBarIndex = tabBarController.selectedIndex
+        
+        if tabBarIndex == 0 {
+            self.eventCollectionView.setContentOffset(CGPoint.zero, animated: true)
+        }
     }
 }

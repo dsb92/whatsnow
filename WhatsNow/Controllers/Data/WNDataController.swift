@@ -29,10 +29,12 @@ class WNDataController: NSObject {
     
     func fetchEvents(fromLocationAddress address: String) {
         print("Fetching events from \(address)...")
-        Alamofire.request("https://www.eventbriteapi.com/v3/events/search?location.address=\(address)&expand=organizer,venue&token=\(Auth.Token)")
+        
+        let requestUrl: String = "https://www.eventbriteapi.com/v3/events/search?location.address=\(address.encodeToUrl)&expand=organizer,venue&sort_by=date&token=\(Auth.Token)"
+        Alamofire.request(requestUrl)
             .validate()
             .responseObject { (response: DataResponse<WNEventsParser>) in
-                
+
                 guard let eventParser: WNEventsParser = response.result.value, let events: [WNEvent] = eventParser.events else { return }
                 
                 print("Fetched \(String(describing: events.count)) from \(address)...")
