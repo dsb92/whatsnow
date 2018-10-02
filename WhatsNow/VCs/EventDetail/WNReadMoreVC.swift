@@ -41,7 +41,6 @@ class WNReadMoreVC: WNBaseVC {
         self.textView.textContainerInset = .zero
         self.textView.textContainer.lineFragmentPadding = 0
         self.textView.attributedText = event.descriptionField?.html?.htmlAttributedContent(withFont: UIFont.systemFont(ofSize: 16), andColor: .black)
-        self.textView.textContainer.maximumNumberOfLines = 10;
         self.textView.textContainer.lineBreakMode = .byTruncatingTail
         self.textView.sizeToContent()
         self.textView.layoutIfNeeded()

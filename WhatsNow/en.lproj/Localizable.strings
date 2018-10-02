@@ -9,3 +9,9 @@
 "free" = "Free";
 "ticket_master_eventbrite" = "on EventBrite";
 "read_more_button" = "Read more";
+"location_label" = "Location";
+"open_in_maps" = "Open in Maps";
+"cancel" = "Cancel";
+"error" = "Error";
+"google_maps_app_not_installed" = "You do not have Google Maps app installed. Install it to view this location from Google Maps.";
+"ok" = "OK";

@@ -48,6 +48,7 @@
 		4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF792152CB6A00D5D542 /* WNAddres.swift */; };
 		4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF7A2152CB6B00D5D542 /* WNVenue.swift */; };
 		4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF812152D83900D5D542 /* WNFormatUtil.swift */; };
+		463B08A72163BB480048C464 /* WNKeysUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B08A62163BB480048C464 /* WNKeysUtil.swift */; };
 		46B2E5EF215BF8E100F81537 /* WNReadMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */; };
 		46B2E5F0215BF8E100F81537 /* WNReadMoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */; };
 		46B2E5F8215C06EA00F81537 /* WNEventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */; };
@@ -103,6 +104,7 @@
 		4631AF792152CB6A00D5D542 /* WNAddres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNAddres.swift; sourceTree = "<group>"; };
 		4631AF7A2152CB6B00D5D542 /* WNVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNVenue.swift; sourceTree = "<group>"; };
 		4631AF812152D83900D5D542 /* WNFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNFormatUtil.swift; sourceTree = "<group>"; };
+		463B08A62163BB480048C464 /* WNKeysUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNKeysUtil.swift; sourceTree = "<group>"; };
 		46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNReadMoreVC.swift; sourceTree = "<group>"; };
 		46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNReadMoreVC.xib; sourceTree = "<group>"; };
 		46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventHeaderView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				4631AF812152D83900D5D542 /* WNFormatUtil.swift */,
+				463B08A62163BB480048C464 /* WNKeysUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */,
 				4601DC9D214EDE8A00DE7CCC /* WNTopLeft.swift in Sources */,
 				4601DC80214EA9F800DE7CCC /* WNEventDetailVC.swift in Sources */,
+				463B08A72163BB480048C464 /* WNKeysUtil.swift in Sources */,
 				4601DC9B214EDE8A00DE7CCC /* WNOriginal.swift in Sources */,
 				4601DC8C214EAE4200DE7CCC /* WNEventCollectionViewCell.swift in Sources */,
 				4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */,
@@ -699,10 +703,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC3CDPK7H2;
 				INFOPLIST_FILE = WhatsNow/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dabdeveloper.WhatsNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -718,10 +719,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC3CDPK7H2;
 				INFOPLIST_FILE = WhatsNow/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dabdeveloper.WhatsNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

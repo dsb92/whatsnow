@@ -9,3 +9,9 @@
 "free" = "Gratis";
 "ticket_master_eventbrite" = "hos EventBrite";
 "read_more_button" = "Læs mere";
+"location_label" = "Lokation";
+"open_in_maps" = "Åben i Maps";
+"cancel" = "Annuller";
+"error" = "Fejl";
+"google_maps_app_not_installed" = "Du har ikke Google Maps app installeret. Installere denne app for at vise lokationen med Google Maps.";
+"ok" = "OK";

@@ -14,10 +14,11 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     let tabBarCon: WNTabBarController = WNTabBarController()
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        self.setupTracking()
         self.setupAppearance()
         self.setupTabBar()
         
@@ -60,6 +61,10 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate {
         profileNavCon.tabBarItem = UITabBarItem(title: "Profil", image: UIImage(), selectedImage: UIImage())
         
         self.tabBarCon.setViewControllers([eventsNavCon, searchNavCon, nearMeNavCon, favoritesNavCon, profileNavCon], animated: true)
+    }
+    
+    func setupTracking() {
+        
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

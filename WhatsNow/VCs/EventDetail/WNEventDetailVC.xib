@@ -19,6 +19,9 @@
                 <outlet property="locationButton" destination="S6W-bf-kma" id="opJ-BU-T7y"/>
                 <outlet property="locationIcon" destination="rJ3-wI-Wff" id="XPo-3P-0cw"/>
                 <outlet property="locationNameLabel" destination="qGe-Eg-PEe" id="cBe-Bv-TAJ"/>
+                <outlet property="locationSnapShotImageView" destination="Tgc-pu-5lo" id="c4C-4W-YkP"/>
+                <outlet property="locationSnapShotLabel" destination="SG1-fZ-VC8" id="Wnl-3p-cJh"/>
+                <outlet property="locationSnapShotNameLabel" destination="z6h-un-6Ar" id="xvf-sV-GjD"/>
                 <outlet property="practicalInfoView" destination="Bdk-Xg-etQ" id="4DQ-Rs-IZJ"/>
                 <outlet property="readMoreButton" destination="Z9o-iP-948" id="SgV-5U-FyC"/>
                 <outlet property="scrollView" destination="e2D-Kt-5nO" id="L3N-ao-4Lc"/>
@@ -34,20 +37,20 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="1081"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="PZ3-t4-b7M">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1081"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="eIA-7g-1Dq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1081"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
                     <blurEffect style="light"/>
                 </visualEffectView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="e2D-Kt-5nO">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1081"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="QHc-6I-UgX" customClass="WNCardView" customModule="WhatsNow" customModuleProvider="target">
@@ -56,7 +59,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" id="s5Q-mi-eWC">
-                            <rect key="frame" x="0.0" y="355" width="375" height="457"/>
+                            <rect key="frame" x="0.0" y="355" width="375" height="720"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="Bdk-Xg-etQ">
@@ -145,6 +148,24 @@
                                         <action selector="didTapReadMoreButton:" destination="-1" eventType="touchUpInside" id="SBR-Ky-obs"/>
                                     </connections>
                                 </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SG1-fZ-VC8">
+                                    <rect key="frame" x="13" y="421" width="348" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Tgc-pu-5lo">
+                                    <rect key="frame" x="8" y="488" width="353" height="208"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z6h-un-6Ar">
+                                    <rect key="frame" x="13" y="450" width="348" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -152,7 +173,8 @@
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <point key="canvasLocation" x="53.600000000000001" y="47.290640394088669"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="53.600000000000001" y="146.67487684729065"/>
         </view>
     </objects>
 </document>
