@@ -9,7 +9,5 @@
 import UIKit
 
 class WNKeysUtil: NSObject {
-    class GoogleApi {
-        static let KEY: String = "AIzaSyB1HjTDHTLHWse9i-I0TySa5WAc7xbaLac"
-    }
+
 }
