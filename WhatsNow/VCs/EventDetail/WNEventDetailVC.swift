@@ -44,10 +44,14 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     @IBOutlet weak var locationSnapShotNameLabel: UILabel!
     @IBOutlet weak var locationSnapShotImageView: UIImageView!
     
+    @IBOutlet weak var eventsLikeThisLabel: UILabel!
+    @IBOutlet weak var eventsLikeThisCollectionView: WNEventsByOrganizerCollectionView!
+    
     let closeButton: UIButton = UIButton(type: .custom)
     
     var seperatorOne: UIView = UIView()
     var seperatorTwo: UIView = UIView()
+    var seperatorThree: UIView = UIView()
     lazy var seperators: [UIView] = [UIView]()
     
     let imageCache = NSCache<NSString, UIImage>()
@@ -58,6 +62,12 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         super.viewDidLoad()
         
         self.setupHero()
+        
+        guard let event: WNEvent = self.event else { return }
+        
+        if let organizerId: Int = Int(event.organizerId ?? "") {
+            self.dataCon.fetchEvents(byOrganizerId: organizerId)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -165,6 +175,13 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         tapGesture.cancelsTouchesInView = false
         self.locationSnapShotImageView.addGestureRecognizer(tapGesture)
         
+        self.eventsLikeThisLabel.text = "events_like_this".localized
+        self.eventsLikeThisLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        self.eventsLikeThisLabel.textColor = .black
+        
+        self.eventsLikeThisCollectionView.eventsCollectionViewDelegate = self
+        self.eventsLikeThisCollectionView.delaysContentTouches = false
+        
         self.scrollView.backgroundColor = .white
         self.scrollView.clipsToBounds = true
         self.scrollView.bounces = true
@@ -183,9 +200,11 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         
         self.seperators.append(self.seperatorOne)
         self.seperators.append(self.seperatorTwo)
+        self.seperators.append(self.seperatorThree)
         
         self.contentView.addSubview(self.seperatorOne)
         self.contentView.addSubview(self.seperatorTwo)
+        self.contentView.addSubview(self.seperatorThree)
         
         self.seperators.forEach {
             $0.backgroundColor = UIColor.lightGray
@@ -263,6 +282,19 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         
         contentYOffset += self.locationSnapShotImageView.bounds.size.height
         
+        // Seperator three
+        self.seperatorThree.frame = CGRect(x: contentMarginX, y: contentYOffset + contentMarginX, width: contentWidth, height: 1)
+        
+        contentYOffset += self.seperatorThree.bounds.size.height + contentMarginX*2
+        
+        self.eventsLikeThisLabel.frame = CGRect(x: contentMarginX, y: contentYOffset, width: contentWidth, height: 30)
+        
+        contentYOffset += self.eventsLikeThisLabel.bounds.size.height
+        
+        self.eventsLikeThisCollectionView.frame = CGRect(x: contentMarginX, y: contentYOffset, width: contentWidth, height: contentWidth + 80)
+        
+        contentYOffset += self.eventsLikeThisCollectionView.bounds.size.height
+        
         self.contentView.frame = CGRect(x: 0, y: outerYOffset, width: bounds.width, height: contentYOffset)
         
         self.scrollView.contentSize = CGSize(width: bounds.width, height: outerYOffset + contentYOffset)
@@ -301,6 +333,12 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
             // Display snapshot
             self.locationSnapShotImageView.image = image
         }
+    }
+    
+    override func assignDelegates() {
+        super.assignDelegates()
+        
+        self.dataCon.organizerDelegate = self
     }
     
     private func cachedLocationSnapShotKey(from latitude: Double, longitude: Double) -> String {
@@ -428,5 +466,19 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+}
+
+extension WNEventDetailVC: WNEventsByOrganizerCollectionViewDelegate {
+    func eventsCollectionViewDidSelectEvent(_ sender: WNEventsByOrganizerCollectionView, event: WNEvent) {
+        
+    }
+}
+
+extension WNEventDetailVC: WNDataControllerOrganizerDelegate {
+    func dataControllerDidFetchEventsByOrganizer(_ parser: WNEventsParser) {
+        guard let events: [WNEvent] = parser.events else { return }
+        
+        self.eventsLikeThisCollectionView.events = events
     }
 }

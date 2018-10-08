@@ -48,12 +48,12 @@
 		4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF792152CB6A00D5D542 /* WNAddres.swift */; };
 		4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF7A2152CB6B00D5D542 /* WNVenue.swift */; };
 		4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF812152D83900D5D542 /* WNFormatUtil.swift */; };
-		463B08A72163BB480048C464 /* WNKeysUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463B08A62163BB480048C464 /* WNKeysUtil.swift */; };
 		46B2E5EF215BF8E100F81537 /* WNReadMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */; };
 		46B2E5F0215BF8E100F81537 /* WNReadMoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */; };
 		46B2E5F8215C06EA00F81537 /* WNEventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */; };
 		46B2E5F9215C06EA00F81537 /* WNEventHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B2E5F7215C06EA00F81537 /* WNEventHeaderView.xib */; };
 		46B2E5FF215C1AE800F81537 /* WNLocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5FE215C1AE800F81537 /* WNLocationController.swift */; };
+		46E863E5216BD79100346E21 /* WNEventsByOrganizerCollectionVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E863E4216BD79100346E21 /* WNEventsByOrganizerCollectionVIew.swift */; };
 		A76E7357D3C08CFC5AF25E83 /* Pods_WhatsNow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F1B32F19BFD054333F03520 /* Pods_WhatsNow.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,12 +104,12 @@
 		4631AF792152CB6A00D5D542 /* WNAddres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNAddres.swift; sourceTree = "<group>"; };
 		4631AF7A2152CB6B00D5D542 /* WNVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNVenue.swift; sourceTree = "<group>"; };
 		4631AF812152D83900D5D542 /* WNFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNFormatUtil.swift; sourceTree = "<group>"; };
-		463B08A62163BB480048C464 /* WNKeysUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNKeysUtil.swift; sourceTree = "<group>"; };
 		46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNReadMoreVC.swift; sourceTree = "<group>"; };
 		46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNReadMoreVC.xib; sourceTree = "<group>"; };
 		46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventHeaderView.swift; sourceTree = "<group>"; };
 		46B2E5F7215C06EA00F81537 /* WNEventHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNEventHeaderView.xib; sourceTree = "<group>"; };
 		46B2E5FE215C1AE800F81537 /* WNLocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNLocationController.swift; sourceTree = "<group>"; };
+		46E863E4216BD79100346E21 /* WNEventsByOrganizerCollectionVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventsByOrganizerCollectionVIew.swift; sourceTree = "<group>"; };
 		5F5588304F15574152B708B2 /* Pods-WhatsNow.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatsNow.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WhatsNow/Pods-WhatsNow.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,7 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				4631AF812152D83900D5D542 /* WNFormatUtil.swift */,
-				463B08A62163BB480048C464 /* WNKeysUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -300,6 +299,7 @@
 			children = (
 				46B2E5F5215C069700F81537 /* Cells */,
 				4601DC83214EAD8D00DE7CCC /* WNEventsCollectionView.swift */,
+				46E863E4216BD79100346E21 /* WNEventsByOrganizerCollectionVIew.swift */,
 			);
 			path = CollectionViews;
 			sourceTree = "<group>";
@@ -529,12 +529,12 @@
 				4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */,
 				4601DC9D214EDE8A00DE7CCC /* WNTopLeft.swift in Sources */,
 				4601DC80214EA9F800DE7CCC /* WNEventDetailVC.swift in Sources */,
-				463B08A72163BB480048C464 /* WNKeysUtil.swift in Sources */,
 				4601DC9B214EDE8A00DE7CCC /* WNOriginal.swift in Sources */,
 				4601DC8C214EAE4200DE7CCC /* WNEventCollectionViewCell.swift in Sources */,
 				4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */,
 				4601DC91214EBD2700DE7CCC /* WNRoundedCardWrapperView.swift in Sources */,
 				4601DC63214EA67500DE7CCC /* WNEvent.swift in Sources */,
+				46E863E5216BD79100346E21 /* WNEventsByOrganizerCollectionVIew.swift in Sources */,
 				4601DC60214EA67500DE7CCC /* WNAugmentedLocation.swift in Sources */,
 				46B2E5F8215C06EA00F81537 /* WNEventHeaderView.swift in Sources */,
 				4601DC84214EAD8D00DE7CCC /* WNEventsCollectionView.swift in Sources */,
@@ -703,7 +703,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC3CDPK7H2;
 				INFOPLIST_FILE = WhatsNow/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dabdeveloper.WhatsNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -719,7 +722,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC3CDPK7H2;
 				INFOPLIST_FILE = WhatsNow/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dabdeveloper.WhatsNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
