@@ -25,6 +25,8 @@ class WNEventsVC: WNBaseVC {
         }
     }
     
+    var requestMyLocation: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,8 +36,10 @@ class WNEventsVC: WNBaseVC {
         self.eventCollectionView.delaysContentTouches = false
         self.eventCollectionView.addSubview(self.refreshControl)
         
-        self.locCon.requestMyLocation()
-        self.locCon.delegate = self
+        if self.requestMyLocation {
+            self.locCon.requestMyLocation()
+            self.locCon.delegate = self
+        }
     }
     
     override func assignDelegates() {
@@ -45,7 +49,7 @@ class WNEventsVC: WNBaseVC {
     }
     
     @objc func refreshData() {
-        self.dataCon.fetchEvents(fromLocationAddress: self.cityForCurrentEvents)
+        self.dataCon.searchEvents(fromAddress: self.cityForCurrentEvents)
     }
 }
 
@@ -53,7 +57,7 @@ class WNEventsVC: WNBaseVC {
 extension WNEventsVC: WNLocationControllerDelegate {
     func locationControllerDidChangeCity(_ sender: WNLocationController, city: String) {
         if city.lowercased() != self.cityForCurrentEvents.lowercased() {
-            self.dataCon.fetchEvents(fromLocationAddress: city)
+            self.dataCon.searchEvents(fromAddress: city)
             self.cityForCurrentEvents = city
         }
     }
@@ -62,18 +66,7 @@ extension WNEventsVC: WNLocationControllerDelegate {
 // MARK: - WNEventsCollectionViewDelegate
 extension WNEventsVC: WNEventsCollectionViewDelegate {
     func eventsCollectionViewDidSelectEvent(_ sender: WNEventsCollectionView, event: WNEvent) {
-        let vc = WNEventDetailVC()
-        vc.event = event
-        
-        vc.hero.isEnabled = true
-        vc.hero.modalAnimationType = .none
-        
-        let navCon: UINavigationController = UINavigationController(rootViewController: vc)
-        
-        navCon.hero.isEnabled = true
-        navCon.hero.modalAnimationType = .none
-        
-        self.present(navCon, animated: true, completion: nil)
+        self.presentEventDetail(withEvent: event)
     }
 }
 
@@ -110,7 +103,7 @@ extension WNEventsVC: WNDataControllerEventsDelegate {
         }
         
         self.eventCollectionView.sortedKeys = sortedKeys
-        self.eventCollectionView.events = eventsDictionary
+        self.eventCollectionView.eventsDic = eventsDictionary
     }
 }
 

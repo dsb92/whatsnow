@@ -15,9 +15,9 @@ protocol WNEventsCollectionViewDelegate: class {
 
 class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    var events: [String: [WNEvent]] = [String: [WNEvent]]() {
+    var eventsDic: [String: [WNEvent]] = [String: [WNEvent]]() {
         didSet {
-            self.isHidden = self.events.isEmpty ? true : false
+            self.isHidden = self.eventsDic.isEmpty ? true : false
             self.reloadData()
         }
     }
@@ -61,15 +61,15 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         self.dataSource = self
     }
     
-    private func registerCells() {
+    func registerCells() {
         self.register(UINib(nibName: self.EVENT_CELL_IDENTIFIER, bundle: nil), forCellWithReuseIdentifier: self.EVENT_CELL_IDENTIFIER)
         self.register(UINib(nibName: self.EVENT_CELL_SECTION_HEADER_IDENTIFIER, bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: self.EVENT_CELL_SECTION_HEADER_IDENTIFIER)
     }
     
-    private func event(forIndexPath indexPath: IndexPath) -> WNEvent? {
+    func event(forIndexPath indexPath: IndexPath) -> WNEvent? {
         let key: String = self.sortedKeys[indexPath.section]
         
-        guard let events: [WNEvent] = self.events[key] else { return nil }
+        guard let events: [WNEvent] = self.eventsDic[key] else { return nil }
         
         let event: WNEvent = events[indexPath.row]
         
@@ -83,7 +83,7 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let key: String = self.sortedKeys[section]
         
-        guard let events: [WNEvent] = self.events[key] else { return 0 }
+        guard let events: [WNEvent] = self.eventsDic[key] else { return 0 }
         
         return events.count
     }

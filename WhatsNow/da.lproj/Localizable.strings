@@ -16,3 +16,4 @@
 "google_maps_app_not_installed" = "Du har ikke Google Maps app installeret. Installere denne app for at vise lokationen med Google Maps.";
 "ok" = "OK";
 "events_like_this" = "Flere begivenheder som denne";
+"by" = "af X";

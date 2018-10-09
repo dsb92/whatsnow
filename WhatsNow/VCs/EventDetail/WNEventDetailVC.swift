@@ -24,6 +24,8 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     @IBOutlet weak var practicalInfoView: UIView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var readMoreButton: UIButton!
+    @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var byOrganizerButton: UIButton!
     
     @IBOutlet weak var calendarIcon: UIImageView!
     @IBOutlet weak var locationIcon: UIImageView!
@@ -45,7 +47,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     @IBOutlet weak var locationSnapShotImageView: UIImageView!
     
     @IBOutlet weak var eventsLikeThisLabel: UILabel!
-    @IBOutlet weak var eventsLikeThisCollectionView: WNEventsByOrganizerCollectionView!
+    @IBOutlet weak var eventsLikeThisCollectionView: WNEventsLikeThisCollectionView!
     
     let closeButton: UIButton = UIButton(type: .custom)
     
@@ -65,9 +67,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         
         guard let event: WNEvent = self.event else { return }
         
-        if let organizerId: Int = Int(event.organizerId ?? "") {
-            self.dataCon.fetchEvents(byOrganizerId: organizerId)
-        }
+        self.dataCon.searchEvents(fromAddress: event.venue?.address?.city ?? "", andCategoryId: event.categoryId ?? "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +83,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     }
     
     private func setupHero() {
-        guard let event: WNEvent = event else { return }
+        guard let event: WNEvent = self.event else { return }
         
         let cardHeroId = "card\(event.id ?? "")"
         
@@ -102,6 +102,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     override func setupUI() {
         super.setupUI()
         
+        self.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = .clear
         
         self.view.addSubview(self.closeButton)
@@ -117,6 +118,21 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.cardView.subtitleLabel.text = event.organizer?.name
         if let imageUrl: URL = URL(string: event.logo?.original?.url ?? "") {
             self.cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)
+        }
+        
+        self.eventNameLabel.font = UIFont.boldSystemFont(ofSize: 28)
+        self.eventNameLabel.textColor = UIColor.black
+        self.eventNameLabel.text = event.name?.text
+        self.eventNameLabel.numberOfLines = 0
+        self.eventNameLabel.sizeToFit()
+        
+        if let organizer: WNOrganizer = event.organizer {
+            self.byOrganizerButton.setTitle("by".localized.replacingOccurrences(of: "X", with: "\(organizer.name ?? "")"), for: .normal)
+            self.byOrganizerButton.titleLabel?.text = "by".localized.replacingOccurrences(of: "X", with: "\(organizer.name ?? "")")
+            self.byOrganizerButton.setTitleColor(UIColor.lightGray, for: .normal)
+            self.byOrganizerButton.titleLabel?.textColor = UIColor.lightGray
+            self.byOrganizerButton.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
+            self.byOrganizerButton.sizeToFit()
         }
         
         self.calendarIcon.image = #imageLiteral(resourceName: "icon_calender_black")
@@ -181,6 +197,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         
         self.eventsLikeThisCollectionView.eventsCollectionViewDelegate = self
         self.eventsLikeThisCollectionView.delaysContentTouches = false
+        self.eventsLikeThisCollectionView.clipsToBounds = false
         
         self.scrollView.backgroundColor = .white
         self.scrollView.clipsToBounds = true
@@ -194,7 +211,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.closeButton.setImage(#imageLiteral(resourceName: "ic_close.png").withRenderingMode(.alwaysTemplate), for: .normal)
         self.closeButton.imageView?.tintColor = UIColor.white.withAlphaComponent(0.8)
         self.closeButton.addTarget(self, action: #selector(self.didTapCloseButton(_:)), for: .touchUpInside)
-        self.closeButton.layer.cornerRadius = closeButton.bounds.size.width/2.0;
+        self.closeButton.layer.cornerRadius = closeButton.bounds.size.width/2.0
         self.closeButton.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         self.closeButton.hero.id = "back button"
         
@@ -238,6 +255,18 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         outerYOffset += self.cardView.bounds.size.height
         
         // Content here
+        contentYOffset += 20
+        
+        // Event name
+        self.eventNameLabel.frame = CGRect(x: contentMarginX, y: contentYOffset, width: contentWidth, height: self.eventNameLabel.frame.size.height)
+        
+        contentYOffset += self.eventNameLabel.bounds.size.height
+        
+        // Organizer
+        self.byOrganizerButton.frame = CGRect(x: contentMarginX, y: contentYOffset, width: contentWidth, height: 30)
+        
+        contentYOffset += self.byOrganizerButton.bounds.size.height
+        
         contentYOffset += 20
         
         // Practical info
@@ -338,7 +367,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     override func assignDelegates() {
         super.assignDelegates()
         
-        self.dataCon.organizerDelegate = self
+        self.dataCon.eventsDelegate = self
     }
     
     private func cachedLocationSnapShotKey(from latitude: Double, longitude: Double) -> String {
@@ -402,6 +431,13 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         readMoreVc.event = self.event
         
         self.navigationController?.pushViewController(readMoreVc, animated: true)
+    }
+    
+    @IBAction func didTapByOrganizerButton(_ sender: UIButton) {
+        let organizerVc: WNOrganizerVC = WNOrganizerVC()
+        organizerVc.event = self.event
+        
+        self.navigationController?.pushViewController(organizerVc, animated: true)
     }
     
     @objc func didTapLocationSnapShot(_ sender: UITapGestureRecognizer) {
@@ -469,16 +505,16 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     }
 }
 
-extension WNEventDetailVC: WNEventsByOrganizerCollectionViewDelegate {
-    func eventsCollectionViewDidSelectEvent(_ sender: WNEventsByOrganizerCollectionView, event: WNEvent) {
-        
+extension WNEventDetailVC: WNEventsCollectionViewDelegate {
+    func eventsCollectionViewDidSelectEvent(_ sender: WNEventsCollectionView, event: WNEvent) {
+        self.presentEventDetail(withEvent: event)
     }
 }
 
-extension WNEventDetailVC: WNDataControllerOrganizerDelegate {
-    func dataControllerDidFetchEventsByOrganizer(_ parser: WNEventsParser) {
+extension WNEventDetailVC: WNDataControllerEventsDelegate {
+    func dataControllerDidFetchEvents(_ parser: WNEventsParser) {
         guard let events: [WNEvent] = parser.events else { return }
         
-        self.eventsLikeThisCollectionView.events = events
+        self.eventsLikeThisCollectionView.events = events.filter { $0.id != self.event?.id }
     }
 }

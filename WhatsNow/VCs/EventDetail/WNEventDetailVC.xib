@@ -12,9 +12,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WNEventDetailVC" customModule="WhatsNow" customModuleProvider="target">
             <connections>
                 <outlet property="addToCalendarButton" destination="si5-s2-UIz" id="dST-3U-66t"/>
+                <outlet property="byOrganizerButton" destination="xvT-mm-I6Z" id="EG1-aS-kBf"/>
                 <outlet property="calendarIcon" destination="84D-f4-7me" id="DLx-QY-RXF"/>
                 <outlet property="cardView" destination="QHc-6I-UgX" id="9W4-sc-0Pm"/>
                 <outlet property="contentView" destination="s5Q-mi-eWC" id="an5-Vm-uMl"/>
+                <outlet property="eventNameLabel" destination="onR-ze-FqR" id="Wtb-no-LMA"/>
                 <outlet property="eventsLikeThisCollectionView" destination="f27-2x-o1w" id="uyM-0N-sfG"/>
                 <outlet property="eventsLikeThisLabel" destination="Xyg-CZ-UgU" id="d0b-ol-lOn"/>
                 <outlet property="locationAddressLabel" destination="TNU-5I-mb0" id="C9j-dC-cYe"/>
@@ -39,7 +41,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="1313"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="1426"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" id="PZ3-t4-b7M">
@@ -52,7 +54,7 @@
                     <blurEffect style="light"/>
                 </visualEffectView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="e2D-Kt-5nO">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="1313"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="1427"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="QHc-6I-UgX" customClass="WNCardView" customModule="WhatsNow" customModuleProvider="target">
@@ -61,11 +63,19 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view contentMode="scaleToFill" id="s5Q-mi-eWC">
-                            <rect key="frame" x="0.0" y="355" width="375" height="961"/>
+                            <rect key="frame" x="0.0" y="355" width="375" height="1072"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xvT-mm-I6Z">
+                                    <rect key="frame" x="8" y="59" width="348" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="didTapByOrganizerButton:" destination="-1" eventType="touchUpInside" id="DUG-D1-4L4"/>
+                                    </connections>
+                                </button>
                                 <view contentMode="scaleToFill" id="Bdk-Xg-etQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="240"/>
+                                    <rect key="frame" x="0.0" y="131" width="375" height="237"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="84D-f4-7me">
@@ -135,7 +145,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="bdf-fV-gIZ">
-                                    <rect key="frame" x="13" y="237" width="348" height="138"/>
+                                    <rect key="frame" x="13" y="376" width="348" height="138"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -143,7 +153,7 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Z9o-iP-948">
-                                    <rect key="frame" x="13" y="383" width="96" height="30"/>
+                                    <rect key="frame" x="16" y="530" width="96" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Read more"/>
                                     <connections>
@@ -151,32 +161,32 @@
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SG1-fZ-VC8">
-                                    <rect key="frame" x="13" y="421" width="348" height="21"/>
+                                    <rect key="frame" x="16" y="568" width="348" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Tgc-pu-5lo">
-                                    <rect key="frame" x="8" y="488" width="353" height="208"/>
+                                    <rect key="frame" x="11" y="635" width="353" height="208"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="z6h-un-6Ar">
-                                    <rect key="frame" x="13" y="450" width="348" height="21"/>
+                                    <rect key="frame" x="16" y="597" width="348" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xyg-CZ-UgU">
-                                    <rect key="frame" x="13" y="735" width="348" height="34"/>
+                                    <rect key="frame" x="13" y="876" width="348" height="34"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="f27-2x-o1w" customClass="WNEventsByOrganizerCollectionView" customModule="WhatsNow" customModuleProvider="target">
-                                    <rect key="frame" x="13" y="784" width="348" height="128"/>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="f27-2x-o1w" customClass="WNEventsLikeThisCollectionView" customModule="WhatsNow" customModuleProvider="target">
+                                    <rect key="frame" x="13" y="925" width="348" height="128"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="GNN-Pv-bsf">
@@ -186,6 +196,13 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="onR-ze-FqR">
+                                    <rect key="frame" x="8" y="8" width="348" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -194,7 +211,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="53.600000000000001" y="232.38916256157637"/>
+            <point key="canvasLocation" x="53.600000000000001" y="274.13793103448279"/>
         </view>
     </objects>
 </document>
