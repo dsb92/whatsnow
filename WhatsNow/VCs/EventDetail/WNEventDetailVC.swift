@@ -24,8 +24,6 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     @IBOutlet weak var practicalInfoView: UIView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var readMoreButton: UIButton!
-    @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var byOrganizerButton: UIButton!
     
     @IBOutlet weak var calendarIcon: UIImageView!
     @IBOutlet weak var locationIcon: UIImageView!
@@ -118,21 +116,6 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.cardView.subtitleLabel.text = event.organizer?.name
         if let imageUrl: URL = URL(string: event.logo?.original?.url ?? "") {
             self.cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)
-        }
-        
-        self.eventNameLabel.font = UIFont.boldSystemFont(ofSize: 28)
-        self.eventNameLabel.textColor = UIColor.black
-        self.eventNameLabel.text = event.name?.text
-        self.eventNameLabel.numberOfLines = 0
-        self.eventNameLabel.sizeToFit()
-        
-        if let organizer: WNOrganizer = event.organizer {
-            self.byOrganizerButton.setTitle("by".localized.replacingOccurrences(of: "X", with: "\(organizer.name ?? "")"), for: .normal)
-            self.byOrganizerButton.titleLabel?.text = "by".localized.replacingOccurrences(of: "X", with: "\(organizer.name ?? "")")
-            self.byOrganizerButton.setTitleColor(UIColor.lightGray, for: .normal)
-            self.byOrganizerButton.titleLabel?.textColor = UIColor.lightGray
-            self.byOrganizerButton.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
-            self.byOrganizerButton.sizeToFit()
         }
         
         self.calendarIcon.image = #imageLiteral(resourceName: "icon_calender_black")
@@ -255,18 +238,6 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         outerYOffset += self.cardView.bounds.size.height
         
         // Content here
-        contentYOffset += 20
-        
-        // Event name
-        self.eventNameLabel.frame = CGRect(x: contentMarginX, y: contentYOffset, width: contentWidth, height: self.eventNameLabel.frame.size.height)
-        
-        contentYOffset += self.eventNameLabel.bounds.size.height
-        
-        // Organizer
-        self.byOrganizerButton.frame = CGRect(x: contentMarginX, y: contentYOffset, width: contentWidth, height: 30)
-        
-        contentYOffset += self.byOrganizerButton.bounds.size.height
-        
         contentYOffset += 20
         
         // Practical info

@@ -10,10 +10,10 @@ import UIKit
 import SDWebImage
 
 class WNCardView: UIView {
+    let titleContainerView = UIView()
     let titleLabel = UILabel()
     let subtitleLabel = UILabel()
     let imageView = UIImageView()
-    let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,33 +30,41 @@ class WNCardView: UIView {
     func commonInit() {
         clipsToBounds = true
         
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 32)
-        titleLabel.clipsToBounds = false
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.minimumScaleFactor = 0.5
-        titleLabel.numberOfLines = 2
-        titleLabel.lineBreakMode = .byTruncatingTail
-        titleLabel.sizeToFit()
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 42)
+        self.titleLabel.clipsToBounds = false
+        self.titleLabel.adjustsFontSizeToFitWidth = true
+        self.titleLabel.minimumScaleFactor = 0.5
+        self.titleLabel.numberOfLines = 2
+        self.titleLabel.lineBreakMode = .byTruncatingTail
+        self.titleLabel.textColor = UIColor.black
+        self.titleLabel.sizeToFit()
         
-        subtitleLabel.font = UIFont.systemFont(ofSize: 17)
-        subtitleLabel.clipsToBounds = false
-        subtitleLabel.numberOfLines = 1
-        subtitleLabel.lineBreakMode = .byTruncatingTail
-        subtitleLabel.sizeToFit()
+        self.subtitleLabel.font = UIFont.systemFont(ofSize: 17)
+        self.subtitleLabel.clipsToBounds = false
+        self.subtitleLabel.numberOfLines = 1
+        self.subtitleLabel.lineBreakMode = .byTruncatingTail
+        self.subtitleLabel.textColor = UIColor.lightGray
+        self.subtitleLabel.sizeToFit()
         
-        imageView.contentMode = .scaleAspectFill
+        self.imageView.contentMode = .scaleAspectFill
         
-        addSubview(imageView)
-        addSubview(visualEffectView)
-        addSubview(titleLabel)
-        addSubview(subtitleLabel)
+        self.titleContainerView.backgroundColor = UIColor.white
+        
+        self.titleContainerView.addSubview(self.titleLabel)
+        self.titleContainerView.addSubview(self.subtitleLabel)
+        
+        self.addSubview(self.imageView)
+        self.addSubview(self.titleContainerView)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        imageView.frame = bounds
-        visualEffectView.frame = CGRect(x: 0, y: 0, width: bounds.width, height: 100)
-        titleLabel.frame = CGRect(x: 20, y: 45, width: bounds.width - 40, height: 40)
-        subtitleLabel.frame = CGRect(x: 20, y: 15, width: bounds.width - 40, height: 30)
+        
+        self.titleContainerView.frame = CGRect(x: 0, y: bounds.size.height - 120, width: bounds.size.width, height: 120)
+        
+        self.imageView.frame = CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height - self.titleContainerView.bounds.size.height)
+        
+        self.titleLabel.frame = CGRect(x: 20, y: 45, width: self.titleContainerView.bounds.size.width - 40, height: self.titleLabel.intrinsicContentSize.height)
+        self.subtitleLabel.frame = CGRect(x: 20, y: 15, width: self.titleContainerView.bounds.size.width - 40, height: 30)
     }
 }

@@ -12,11 +12,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WNEventDetailVC" customModule="WhatsNow" customModuleProvider="target">
             <connections>
                 <outlet property="addToCalendarButton" destination="si5-s2-UIz" id="dST-3U-66t"/>
-                <outlet property="byOrganizerButton" destination="xvT-mm-I6Z" id="EG1-aS-kBf"/>
                 <outlet property="calendarIcon" destination="84D-f4-7me" id="DLx-QY-RXF"/>
                 <outlet property="cardView" destination="QHc-6I-UgX" id="9W4-sc-0Pm"/>
                 <outlet property="contentView" destination="s5Q-mi-eWC" id="an5-Vm-uMl"/>
-                <outlet property="eventNameLabel" destination="onR-ze-FqR" id="Wtb-no-LMA"/>
                 <outlet property="eventsLikeThisCollectionView" destination="f27-2x-o1w" id="uyM-0N-sfG"/>
                 <outlet property="eventsLikeThisLabel" destination="Xyg-CZ-UgU" id="d0b-ol-lOn"/>
                 <outlet property="locationAddressLabel" destination="TNU-5I-mb0" id="C9j-dC-cYe"/>
@@ -66,14 +64,6 @@
                             <rect key="frame" x="0.0" y="355" width="375" height="1072"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xvT-mm-I6Z">
-                                    <rect key="frame" x="8" y="59" width="348" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
-                                    <connections>
-                                        <action selector="didTapByOrganizerButton:" destination="-1" eventType="touchUpInside" id="DUG-D1-4L4"/>
-                                    </connections>
-                                </button>
                                 <view contentMode="scaleToFill" id="Bdk-Xg-etQ">
                                     <rect key="frame" x="0.0" y="131" width="375" height="237"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -196,13 +186,6 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="onR-ze-FqR">
-                                    <rect key="frame" x="8" y="8" width="348" height="29"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>

@@ -115,7 +115,7 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         guard let event: WNEvent = self.event(forIndexPath: indexPath) else { return cell }
         
         cell.cardView.cardView.titleLabel.text = event.name?.text
-        cell.cardView.cardView.subtitleLabel.text = event.organizer?.name
+        cell.cardView.cardView.subtitleLabel.text = event.organizer?.name?.uppercased()
         
         if let imageUrl: URL = URL(string: event.logo?.original?.url ?? "") {
             cell.cardView.cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)

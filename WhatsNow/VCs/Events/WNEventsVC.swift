@@ -13,12 +13,6 @@ class WNEventsVC: WNBaseVC {
     
     @IBOutlet weak var eventCollectionView: WNEventsCollectionView!
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshCon:UIRefreshControl = UIRefreshControl()
-        refreshCon.addTarget(self, action: #selector(self.refreshData), for: .valueChanged)
-        return refreshCon
-    }()
-    
     var cityForCurrentEvents: String = String() {
         didSet {
             self.title = self.cityForCurrentEvents
@@ -34,7 +28,6 @@ class WNEventsVC: WNBaseVC {
         
         self.eventCollectionView.eventsCollectionViewDelegate = self
         self.eventCollectionView.delaysContentTouches = false
-        self.eventCollectionView.addSubview(self.refreshControl)
         
         if self.requestMyLocation {
             self.locCon.requestMyLocation()
@@ -73,8 +66,6 @@ extension WNEventsVC: WNEventsCollectionViewDelegate {
 // MARK: - WNDataControllerEventsDelegate
 extension WNEventsVC: WNDataControllerEventsDelegate {
     func dataControllerDidFetchEvents(_ parser: WNEventsParser) {
-        self.refreshControl.endRefreshing()
-        
         guard let events: [WNEvent] = parser.events else { return }
         
         var eventsDictionary: [String: [WNEvent]] = [String: [WNEvent]]()
