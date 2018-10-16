@@ -56,13 +56,6 @@ extension WNEventsVC: WNLocationControllerDelegate {
     }
 }
 
-// MARK: - WNEventsCollectionViewDelegate
-extension WNEventsVC: WNEventsCollectionViewDelegate {
-    func eventsCollectionViewDidSelectEvent(_ sender: WNEventsCollectionView, event: WNEvent) {
-        self.presentEventDetail(withEvent: event)
-    }
-}
-
 // MARK: - WNDataControllerEventsDelegate
 extension WNEventsVC: WNDataControllerEventsDelegate {
     func dataControllerDidFetchEvents(_ parser: WNEventsParser) {
@@ -106,5 +99,20 @@ extension WNEventsVC: UITabBarControllerDelegate {
         if tabBarIndex == 0 {
             self.eventCollectionView.setContentOffset(CGPoint.zero, animated: true)
         }
+    }
+}
+
+// MARK: - WNEventsCollectionViewDelegate
+extension WNEventsVC: WNEventsCollectionViewDelegate {
+    func eventsCollectionViewDidFavoriteEvent(_ sender: WNEventsCollectionView, event: WNEvent, favorite: Bool) {
+        
+    }
+    
+    func eventsCollectionViewDidTapShareEvent(_ sender: WNEventsCollectionView, event: WNEvent) {
+        self.presentShareController(withEvent: event)
+    }
+    
+    func eventsCollectionViewDidSelectEvent(_ sender: WNEventsCollectionView, event: WNEvent) {
+        self.presentEventDetail(withEvent: event)
     }
 }

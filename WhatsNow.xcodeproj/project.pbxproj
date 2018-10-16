@@ -50,6 +50,7 @@
 		4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF812152D83900D5D542 /* WNFormatUtil.swift */; };
 		465BCE07216D2C490081967B /* WNOrganizerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465BCE05216D2C490081967B /* WNOrganizerVC.swift */; };
 		465BCE08216D2C490081967B /* WNOrganizerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 465BCE06216D2C490081967B /* WNOrganizerVC.xib */; };
+		4670E99E21766C360090BF99 /* WNHapticFeedBackUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */; };
 		46B2E5EF215BF8E100F81537 /* WNReadMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */; };
 		46B2E5F0215BF8E100F81537 /* WNReadMoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */; };
 		46B2E5F8215C06EA00F81537 /* WNEventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */; };
@@ -108,6 +109,7 @@
 		4631AF812152D83900D5D542 /* WNFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNFormatUtil.swift; sourceTree = "<group>"; };
 		465BCE05216D2C490081967B /* WNOrganizerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNOrganizerVC.swift; sourceTree = "<group>"; };
 		465BCE06216D2C490081967B /* WNOrganizerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNOrganizerVC.xib; sourceTree = "<group>"; };
+		4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNHapticFeedBackUtil.swift; sourceTree = "<group>"; };
 		46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNReadMoreVC.swift; sourceTree = "<group>"; };
 		46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNReadMoreVC.xib; sourceTree = "<group>"; };
 		46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventHeaderView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				4631AF812152D83900D5D542 /* WNFormatUtil.swift */,
+				4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				4603C55C2150360C00C23E7A /* WNFavoritesVC.swift in Sources */,
 				4601DC99214EDE8A00DE7CCC /* WNLogoParser.swift in Sources */,
 				4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */,
+				4670E99E21766C360090BF99 /* WNHapticFeedBackUtil.swift in Sources */,
 				4603C5612150365500C23E7A /* WNProfileVC.swift in Sources */,
 				4603C5522150352E00C23E7A /* WNSearchVC.swift in Sources */,
 			);

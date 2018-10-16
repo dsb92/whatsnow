@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class WNEventCollectionViewCell: UICollectionViewCell {
     
@@ -27,6 +28,15 @@ class WNEventCollectionViewCell: UICollectionViewCell {
         // Initialization code
         
         self.addSubview(self.cardView)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        self.cardView.cardView.imageView.sd_cancelCurrentImageLoad()
+        self.cardView.cardView.imageView.image = nil
+        
+        self.cardView.cardView.indexPath = nil
     }
     
     override func layoutSubviews() {

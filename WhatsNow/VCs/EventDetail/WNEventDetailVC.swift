@@ -47,8 +47,6 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     @IBOutlet weak var eventsLikeThisLabel: UILabel!
     @IBOutlet weak var eventsLikeThisCollectionView: WNEventsLikeThisCollectionView!
     
-    let closeButton: UIButton = UIButton(type: .custom)
-    
     var seperatorOne: UIView = UIView()
     var seperatorTwo: UIView = UIView()
     var seperatorThree: UIView = UIView()
@@ -77,6 +75,8 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
+        self.cardView.closeButton.alpha = 1.0
+        
         self.setupFrames()
     }
     
@@ -87,10 +87,9 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         
         self.cardView.hero.id = cardHeroId
         self.cardView.hero.modifiers = [.useNoSnapshot, .spring(stiffness: 250, damping: 25)]
+        self.cardView.closeButton.hero.modifiers = [.fade, .useNoSnapshot, .forceAnimate]
         
         self.scrollView.hero.modifiers = [.source(heroID: cardHeroId), .spring(stiffness: 250, damping: 25)]
-        
-        self.closeButton.hero.modifiers = [.fade, .useNoSnapshot]
         
         self.contentView.hero.modifiers = [.useNoSnapshot, .forceAnimate, .spring(stiffness: 250, damping: 25)]
         
@@ -103,8 +102,6 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.view.translatesAutoresizingMaskIntoConstraints = false
         self.view.backgroundColor = .clear
         
-        self.view.addSubview(self.closeButton)
-        
         // add a pan gesture recognizer for the interactive dismiss transition
         let panGesture: UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gr:)))
         panGesture.delegate = self
@@ -113,7 +110,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         guard let event: WNEvent = event else { return }
         
         self.cardView.titleLabel.text = event.name?.text
-        self.cardView.subtitleLabel.text = event.organizer?.name
+        self.cardView.subtitleLabel.text = event.organizer?.name?.uppercased()
         if let imageUrl: URL = URL(string: event.logo?.original?.url ?? "") {
             self.cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)
         }
@@ -190,13 +187,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.scrollView.isScrollEnabled = true
         self.scrollView.delegate = self
         
-        self.closeButton.frame = CGRect(x: self.view.bounds.width - 44, y: 20, width: 30, height: 30)
-        self.closeButton.setImage(#imageLiteral(resourceName: "ic_close.png").withRenderingMode(.alwaysTemplate), for: .normal)
-        self.closeButton.imageView?.tintColor = UIColor.white.withAlphaComponent(0.8)
-        self.closeButton.addTarget(self, action: #selector(self.didTapCloseButton(_:)), for: .touchUpInside)
-        self.closeButton.layer.cornerRadius = closeButton.bounds.size.width/2.0
-        self.closeButton.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        self.closeButton.hero.id = "back button"
+        self.cardView.delegate = self
         
         self.seperators.append(self.seperatorOne)
         self.seperators.append(self.seperatorTwo)
@@ -298,8 +289,6 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.contentView.frame = CGRect(x: 0, y: outerYOffset, width: bounds.width, height: contentYOffset)
         
         self.scrollView.contentSize = CGSize(width: bounds.width, height: outerYOffset + contentYOffset)
-        
-        self.closeButton.layer.cornerRadius = self.closeButton.bounds.size.width/2.0;
     }
     
     private func createLocationSnapShot(from latitude: Double, longitude: Double) {
@@ -393,10 +382,6 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     }
     
     // MARK: - Actions
-    @objc func didTapCloseButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func didTapReadMoreButton(_ sender: UIButton) {
         let readMoreVc: WNReadMoreVC = WNReadMoreVC()
         readMoreVc.event = self.event
@@ -476,7 +461,31 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
     }
 }
 
+extension WNEventDetailVC: WNCardViewDelegate {
+    func cardViewDidTapFavoriteButton(_ sender: WNCardView, favorite: Bool) {
+        
+    }
+    
+    func cardViewDidTapShareButton(_ sender: WNCardView) {
+        guard let event: WNEvent = self.event else { return }
+        
+        self.presentShareController(withEvent: event)
+    }
+    
+    func cardViewDidTapCloseButton(_ sender: WNCardView) {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
 extension WNEventDetailVC: WNEventsCollectionViewDelegate {
+    func eventsCollectionViewDidFavoriteEvent(_ sender: WNEventsCollectionView, event: WNEvent, favorite: Bool) {
+        
+    }
+    
+    func eventsCollectionViewDidTapShareEvent(_ sender: WNEventsCollectionView, event: WNEvent) {
+        self.presentShareController(withEvent: event)
+    }
+    
     func eventsCollectionViewDidSelectEvent(_ sender: WNEventsCollectionView, event: WNEvent) {
         self.presentEventDetail(withEvent: event)
     }

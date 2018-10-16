@@ -11,6 +11,8 @@ import SDWebImage
 
 protocol WNEventsCollectionViewDelegate: class {
     func eventsCollectionViewDidSelectEvent(_ sender: WNEventsCollectionView, event: WNEvent)
+    func eventsCollectionViewDidFavoriteEvent(_ sender: WNEventsCollectionView, event: WNEvent, favorite: Bool)
+    func eventsCollectionViewDidTapShareEvent(_ sender: WNEventsCollectionView, event: WNEvent)
 }
 
 class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -114,8 +116,17 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         
         guard let event: WNEvent = self.event(forIndexPath: indexPath) else { return cell }
         
+        let cardHeroId = "card\(event.id ?? "")"
+        
         cell.cardView.cardView.titleLabel.text = event.name?.text
         cell.cardView.cardView.subtitleLabel.text = event.organizer?.name?.uppercased()
+        
+        cell.cardView.cardView.closeButton.alpha = 0.0
+        cell.cardView.cardView.closeButton.hero.modifiers = [.fade, .useNoSnapshot, .forceAnimate]
+        cell.cardView.cardView.hero.modifiers = [.useNoSnapshot, .spring(stiffness: 250, damping: 25)]
+        cell.cardView.cardView.hero.id = cardHeroId
+        cell.cardView.cardView.indexPath = indexPath
+        cell.cardView.cardView.delegate = self
         
         if let imageUrl: URL = URL(string: event.logo?.original?.url ?? "") {
             cell.cardView.cardView.imageView.sd_setImage(with: imageUrl, placeholderImage: nil, options: .scaleDownLargeImages)
@@ -126,12 +137,6 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let event: WNEvent = self.event(forIndexPath: indexPath) else { return }
-        
-        if let cell: WNEventCollectionViewCell = self.cellForItem(at: indexPath) as? WNEventCollectionViewCell {
-            let cardHeroId = "card\(event.id ?? "")"
-            cell.cardView.cardView.hero.modifiers = [.useNoSnapshot, .spring(stiffness: 250, damping: 25)]
-            cell.cardView.cardView.hero.id = cardHeroId
-        }
 
         self.eventsCollectionViewDelegate?.eventsCollectionViewDidSelectEvent(self, event: event)
     }
@@ -150,5 +155,26 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         return CGSize(width: collectionView.bounds.size.width, height: 60)
+    }
+}
+
+// MARK: - WNCardViewDelegate
+extension WNEventsCollectionView: WNCardViewDelegate {
+    func cardViewDidTapFavoriteButton(_ sender: WNCardView, favorite: Bool) {
+        guard let indexPath: IndexPath = sender.indexPath else { return }
+        guard let event: WNEvent = self.event(forIndexPath: indexPath) else { return }
+        
+        self.eventsCollectionViewDelegate?.eventsCollectionViewDidFavoriteEvent(self, event: event, favorite: favorite)
+    }
+    
+    func cardViewDidTapShareButton(_ sender: WNCardView) {
+        guard let indexPath: IndexPath = sender.indexPath else { return }
+        guard let event: WNEvent = self.event(forIndexPath: indexPath) else { return }
+        
+        self.eventsCollectionViewDelegate?.eventsCollectionViewDidTapShareEvent(self, event: event)
+    }
+    
+    func cardViewDidTapCloseButton(_ sender: WNCardView) {
+        
     }
 }

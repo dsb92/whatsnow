@@ -10,6 +10,17 @@ import UIKit
 
 class WNFormatUtil {
     
+    // MARK: - Buttons
+    static func formatActionButton(_ button: UIButton) {
+        button.backgroundColor = UIColor.white
+        button.layer.cornerRadius = button.bounds.size.width / 2
+        button.clipsToBounds = false
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowRadius = 12
+        button.layer.shadowOpacity = 0.15
+        button.layer.shadowOffset = CGSize(width: 0, height: 8)
+    }
+    
     // MARK: - Date & Time
     static func formatDate(_ dateString: String) -> String {
 
@@ -18,7 +29,7 @@ class WNFormatUtil {
             dateFormatter.dateStyle = .medium
             dateFormatter.dateFormat = "eee dd MMM yyyy"
             
-            return dateFormatter.string(from: date)
+            return dateFormatter.string(from: date).capitalizingFirstLetter()
         }
         
         return ""

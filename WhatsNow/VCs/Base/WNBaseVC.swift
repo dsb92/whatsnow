@@ -57,4 +57,10 @@ class WNBaseVC: UIViewController {
         
         self.present(navCon, animated: true, completion: nil)
     }
+    
+    func presentShareController(withEvent event: WNEvent) {
+        let shareText: String = event.url ?? ""
+        let shareCon: UIActivityViewController = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+        self.present(shareCon, animated: true, completion: nil)
+    }
 }
