@@ -25,10 +25,7 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     var eventsDic: [String: [WNEvent]] = [String: [WNEvent]]() {
         didSet {
             self.isHidden = self.eventsDic.isEmpty ? true : false
-            UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                //Do the data reload here
-                self.reloadData()
-            }, completion: nil)
+            self.reloadData()
         }
     }
     
@@ -72,6 +69,13 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         self.registerCells()
         self.delegate = self
         self.dataSource = self
+    }
+    
+    override func reloadData() {
+        UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {
+            //Do the data reload here
+            super.reloadData()
+        }, completion: nil)
     }
     
     func registerCells() {
