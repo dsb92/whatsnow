@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class WNBaseVC: UIViewController {
 
@@ -15,6 +16,20 @@ class WNBaseVC: UIViewController {
     
     lazy var appDelegate: WNAppDelegate = {
         return UIApplication.shared.delegate as? WNAppDelegate ?? WNAppDelegate()
+    }()
+    
+    lazy var progressSpinner: WNThreeCircleSpinner =
+        {
+            let progressSpinner: WNThreeCircleSpinner = WNThreeCircleSpinner(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+            
+            progressSpinner.layer.zPosition = 10
+            self.view.addSubview(progressSpinner)
+            self.view.bringSubview(toFront: progressSpinner)
+            progressSpinner.snp.makeConstraints({ (make) in
+                make.centerX.equalTo(self.view).offset(-22)
+                make.centerY.equalTo(self.view)
+            })
+            return progressSpinner
     }()
     
     override func viewDidLoad() {

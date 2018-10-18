@@ -47,8 +47,7 @@ class WNEventsVC: WNBaseVC {
             self.locCon.requestMyLocation()
             self.locCon.delegate = self
         }
-    }
-    
+    }    
     override func setupUI() {
         super.setupUI()
         
@@ -128,6 +127,8 @@ class WNEventsVC: WNBaseVC {
         self.showFilter(false)
         
         let distanceValue: Int = Int(self.distanceSlider.value)
+        
+        self.progressSpinner.startAnimating()
         self.dataCon.searchEvents(fromAddress: self.cityForCurrentEvents, andRadiusInKm: distanceValue)
     }
     
@@ -148,6 +149,7 @@ class WNEventsVC: WNBaseVC {
 extension WNEventsVC: WNLocationControllerDelegate {
     func locationControllerDidChangeCity(_ sender: WNLocationController, city: String) {
         if city.lowercased() != self.cityForCurrentEvents.lowercased() {
+            self.progressSpinner.startAnimating()
             self.dataCon.searchEvents(fromAddress: city)
             self.cityForCurrentEvents = city
         }
@@ -157,6 +159,8 @@ extension WNEventsVC: WNLocationControllerDelegate {
 // MARK: - WNDataControllerEventsDelegate
 extension WNEventsVC: WNDataControllerEventsDelegate {
     func dataControllerDidFetchEvents(_ parser: WNEventsParser) {
+        self.progressSpinner.stopAnimating()
+        
         guard let events: [WNEvent] = parser.events else { return }
         
         var eventsDictionary: [String: [WNEvent]] = [String: [WNEvent]]()

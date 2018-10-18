@@ -9,4 +9,5 @@ target 'WhatsNow' do
     pod 'CollectionKit'
     pod 'SnapKit'
     pod 'SDWebImage'
+    pod 'ALThreeCircleSpinner'
 end

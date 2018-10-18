@@ -25,7 +25,10 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     var eventsDic: [String: [WNEvent]] = [String: [WNEvent]]() {
         didSet {
             self.isHidden = self.eventsDic.isEmpty ? true : false
-            self.reloadData()
+            UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                //Do the data reload here
+                self.reloadData()
+            }, completion: nil)
         }
     }
     
@@ -54,6 +57,8 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     }
     
     private func setup() {
+        self.backgroundColor = UIColor.clear
+        
         self.setupAndRegisterCells()
         
         self.delaysContentTouches = false
@@ -123,7 +128,7 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
         guard let event: WNEvent = self.event(forIndexPath: indexPath) else { return cell }
         
         let cardHeroId = "card\(event.id ?? "")"
-        
+
         cell.cardView.cardView.titleLabel.text = event.name?.text
         cell.cardView.cardView.subtitleLabel.text = event.organizer?.name?.uppercased()
         

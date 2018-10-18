@@ -176,6 +176,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.eventsLikeThisLabel.textColor = .black
         
         self.eventsLikeThisCollectionView.eventsCollectionViewDelegate = self
+        self.eventsLikeThisCollectionView.contentInset = UIEdgeInsets(top: 0, left: -18, bottom: 0, right: 0)
         self.eventsLikeThisCollectionView.delaysContentTouches = false
         self.eventsLikeThisCollectionView.clipsToBounds = false
         

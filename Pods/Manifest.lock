@@ -3,6 +3,7 @@ PODS:
   - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
+  - ALThreeCircleSpinner (1.0.4)
   - CollectionKit (2.0.2)
   - Hero (1.3.0)
   - ObjectMapper (3.3.0)
@@ -14,6 +15,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
+  - ALThreeCircleSpinner
   - CollectionKit
   - Hero
   - SDWebImage
@@ -23,6 +25,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireObjectMapper
+    - ALThreeCircleSpinner
     - CollectionKit
     - Hero
     - ObjectMapper
@@ -32,12 +35,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  ALThreeCircleSpinner: a87b9c3511e5fea8509923a17d6f38b11a9b1f5f
   CollectionKit: d8a22aa5084ab227cdbbcd7accb2e5c5f2ea31ec
   Hero: 3eecd3fd62dd2425cbc7e35505c557b86d5a379e
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 8e5158a4450af158b6f818b6cbdef7a1f25f8e5e
+PODFILE CHECKSUM: b0368912cebdb1d926ec467c686956845d0726f8
 
 COCOAPODS: 1.5.3

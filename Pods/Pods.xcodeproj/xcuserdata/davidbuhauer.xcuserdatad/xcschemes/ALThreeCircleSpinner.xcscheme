@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "98E2245BDF14EA3EA5B73ACF95069C2D"
-               BlueprintName = "SDWebImage"
+               BlueprintIdentifier = "D4CB8764E181D85C1469DC2E327B051C"
+               BlueprintName = "ALThreeCircleSpinner"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SDWebImage.framework">
+               BuildableName = "ALThreeCircleSpinner.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

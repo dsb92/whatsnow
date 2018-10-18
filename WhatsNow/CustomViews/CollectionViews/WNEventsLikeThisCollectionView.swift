@@ -13,7 +13,10 @@ class WNEventsLikeThisCollectionView: WNEventsCollectionView {
     var events: [WNEvent] = [WNEvent]() {
         didSet {
             self.isHidden = self.events.isEmpty ? true : false
-            self.reloadData()
+            UIView.transition(with: self, duration: 0.5, options: .transitionCrossDissolve, animations: {
+                //Do the data reload here
+                self.reloadData()
+            }, completion: nil)
         }
     }
 
