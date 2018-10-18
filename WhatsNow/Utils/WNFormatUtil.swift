@@ -10,15 +10,37 @@ import UIKit
 
 class WNFormatUtil {
     
+    // MARK: - Gradients
+    static func themeGradient() -> [UIColor] {
+        let topGradient: UIColor = UIColor(red: 18/255, green: 183/255, blue: 231/255, alpha: 1.0)
+        let bottomGradient: UIColor = UIColor(red: 16/255, green: 140/255, blue: 238/255, alpha: 1.0)
+        
+        return [topGradient, bottomGradient]
+    }
+    
+    static func themeGradientLayer(_ view: UIView, withColors colors: [UIColor]) -> CAGradientLayer {
+        let gradientLayer: CAGradientLayer = CAGradientLayer()
+        gradientLayer.frame = view.bounds
+        gradientLayer.colors = colors.compactMap { $0.cgColor }
+        gradientLayer.masksToBounds = true
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
+        return gradientLayer
+    }
+    
     // MARK: - Buttons
     static func formatActionButton(_ button: UIButton) {
         button.backgroundColor = UIColor.white
-        button.layer.cornerRadius = button.bounds.size.width / 2
-        button.clipsToBounds = false
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowRadius = 12
-        button.layer.shadowOpacity = 0.15
-        button.layer.shadowOffset = CGSize(width: 0, height: 8)
+        self.formatDefaultShadowAndRadius(button)
+    }
+    
+    static func formatDefaultShadowAndRadius(_ view: UIView) {
+        view.layer.cornerRadius = view.bounds.size.width / 2
+        view.clipsToBounds = false
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowRadius = 12
+        view.layer.shadowOpacity = 0.15
+        view.layer.shadowOffset = CGSize(width: 0, height: 8)
     }
     
     // MARK: - Date & Time

@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WNEventsVC" customModule="WhatsNow" customModuleProvider="target">
             <connections>
+                <outlet property="distanceApplyFilterButton" destination="2KU-9P-dBE" id="fcX-ho-B8A"/>
+                <outlet property="distanceSlider" destination="Cik-vy-yUw" id="pIs-CG-DKY"/>
+                <outlet property="distanceSliderValueLabel" destination="5eU-j4-UIA" id="K8D-a0-IiS"/>
+                <outlet property="distanceSliderValueView" destination="5z9-Lo-6uz" id="L5B-AH-Nbj"/>
                 <outlet property="eventCollectionView" destination="cen-ON-2H9" id="Avt-XK-A4v"/>
+                <outlet property="filterView" destination="uTw-1C-W2E" id="UuQ-hl-0GI"/>
+                <outlet property="filterViewTopConstraint" destination="Vuy-8C-QJ0" id="6br-ru-faC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,14 +36,88 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTw-1C-W2E">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                    <subviews>
+                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyF-Xw-Btl">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="zHI-mS-7xH">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5z9-Lo-6uz" customClass="WNGradientView" customModule="WhatsNow" customModuleProvider="target">
+                                        <rect key="frame" x="289" y="16" width="70" height="37"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5eU-j4-UIA">
+                                                <rect key="frame" x="8" y="8" width="54" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="5eU-j4-UIA" secondAttribute="trailing" constant="8" id="JC2-Q6-I1P"/>
+                                            <constraint firstAttribute="width" constant="70" id="N73-ZR-tQf"/>
+                                            <constraint firstAttribute="bottom" secondItem="5eU-j4-UIA" secondAttribute="bottom" constant="8" id="fEq-Zh-9MV"/>
+                                            <constraint firstItem="5eU-j4-UIA" firstAttribute="leading" secondItem="5z9-Lo-6uz" secondAttribute="leading" constant="8" id="tNT-oW-IFT"/>
+                                            <constraint firstItem="5eU-j4-UIA" firstAttribute="top" secondItem="5z9-Lo-6uz" secondAttribute="top" constant="8" id="wrg-eU-c3u"/>
+                                        </constraints>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="1" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="Cik-vy-yUw">
+                                        <rect key="frame" x="14" y="69" width="347" height="31"/>
+                                        <connections>
+                                            <action selector="distanceSliderDidChangeValue:" destination="-1" eventType="valueChanged" id="H0E-bN-sca"/>
+                                        </connections>
+                                    </slider>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2KU-9P-dBE" customClass="WNGradientButton" customModule="WhatsNow" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="115" width="343" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="KGF-cJ-pvx"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="didTapApplyFilterButton:" destination="-1" eventType="touchUpInside" id="ofK-kZ-0vM"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Cik-vy-yUw" secondAttribute="trailing" constant="16" id="8CU-D1-tEU"/>
+                                    <constraint firstAttribute="trailing" secondItem="2KU-9P-dBE" secondAttribute="trailing" constant="16" id="CFA-rR-q7h"/>
+                                    <constraint firstItem="5z9-Lo-6uz" firstAttribute="trailing" secondItem="Cik-vy-yUw" secondAttribute="trailing" id="Cgl-EO-W6V"/>
+                                    <constraint firstAttribute="bottom" secondItem="2KU-9P-dBE" secondAttribute="bottom" constant="16" id="G7r-FY-rg0"/>
+                                    <constraint firstItem="Cik-vy-yUw" firstAttribute="top" secondItem="5z9-Lo-6uz" secondAttribute="bottom" constant="16" id="GRP-Hy-agM"/>
+                                    <constraint firstItem="5z9-Lo-6uz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zHI-mS-7xH" secondAttribute="leading" constant="16" id="Uct-xI-l04"/>
+                                    <constraint firstItem="5z9-Lo-6uz" firstAttribute="top" secondItem="zHI-mS-7xH" secondAttribute="top" constant="16" id="bPZ-uG-0jW"/>
+                                    <constraint firstItem="2KU-9P-dBE" firstAttribute="top" secondItem="Cik-vy-yUw" secondAttribute="bottom" constant="16" id="hEb-3L-MKG"/>
+                                    <constraint firstItem="Cik-vy-yUw" firstAttribute="leading" secondItem="zHI-mS-7xH" secondAttribute="leading" constant="16" id="kCj-rp-W1m"/>
+                                    <constraint firstItem="2KU-9P-dBE" firstAttribute="leading" secondItem="zHI-mS-7xH" secondAttribute="leading" constant="16" id="sTI-tD-oTN"/>
+                                </constraints>
+                            </view>
+                            <blurEffect style="light"/>
+                        </visualEffectView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="qyF-Xw-Btl" firstAttribute="leading" secondItem="uTw-1C-W2E" secondAttribute="leading" id="F6T-uS-ITa"/>
+                        <constraint firstAttribute="bottom" secondItem="qyF-Xw-Btl" secondAttribute="bottom" id="NuI-JY-jyo"/>
+                        <constraint firstAttribute="trailing" secondItem="qyF-Xw-Btl" secondAttribute="trailing" id="Vn7-Cf-DTP"/>
+                        <constraint firstItem="qyF-Xw-Btl" firstAttribute="top" secondItem="uTw-1C-W2E" secondAttribute="top" id="amQ-HF-wtJ"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="cen-ON-2H9" secondAttribute="trailing" id="Csh-kY-WPa"/>
                 <constraint firstAttribute="bottom" secondItem="cen-ON-2H9" secondAttribute="bottom" id="Gcw-U4-X22"/>
-                <constraint firstItem="cen-ON-2H9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vgD-uK-ED7"/>
+                <constraint firstItem="uTw-1C-W2E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MtY-FB-kp5"/>
+                <constraint firstAttribute="trailing" secondItem="uTw-1C-W2E" secondAttribute="trailing" id="QM4-WE-7ct"/>
+                <constraint firstItem="uTw-1C-W2E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Vuy-8C-QJ0"/>
+                <constraint firstItem="cen-ON-2H9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XKa-ja-H8k"/>
                 <constraint firstItem="cen-ON-2H9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zI0-Ac-Scp"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
         </view>
     </objects>
 </document>

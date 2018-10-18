@@ -23,6 +23,7 @@ enum WNURLParameterValue: String {
 enum WNURLParameterKey: String {
     case none = "none"
     case locationAddress = "location.address"
+    case locationWithin = "location.within"
     case expand = "expand"
     case sortBy = "sort_by"
     case orderBy = "order_by"
@@ -46,16 +47,33 @@ class WNDataController: NSObject {
     
     // MARK: - Search events
     func searchEvents(fromAddress address: String) {
-        self.searchEvents(fromParamDic: [WNURLParameterKey.locationAddress: [address.encodeToUrl],
-                                           WNURLParameterKey.expand: [WNURLParameterValue.organizer.rawValue, WNURLParameterValue.venue.rawValue, WNURLParameterValue.category.rawValue],
-                                           WNURLParameterKey.sortBy: [WNURLParameterValue.date.rawValue]])
+        var paramDic: [WNURLParameterKey: [String]] = [WNURLParameterKey: [String]]()
+        
+        paramDic[WNURLParameterKey.locationAddress] = [address.encodeToUrl]
+        paramDic = paramDic.merging(self.getDefaultRequestParamSearch(), uniquingKeysWith: { (_, last) in last })
+        
+        self.searchEvents(fromParamDic: paramDic)
+    }
+    
+    func searchEvents(fromAddress address: String, andRadiusInKm radiusInKm: Int) {
+        var paramDic: [WNURLParameterKey: [String]] = [WNURLParameterKey: [String]]()
+        
+        paramDic[WNURLParameterKey.locationAddress] = [address.encodeToUrl]
+        paramDic[WNURLParameterKey.locationWithin] = ["\(radiusInKm)km"]
+        paramDic = paramDic.merging(self.getDefaultRequestParamSearch(), uniquingKeysWith: { (_, last) in last })
+        
+        self.searchEvents(fromParamDic: paramDic)
     }
     
     func searchEvents(fromAddress address: String, andCategoryId categoryId: String) {
-        self.searchEvents(fromParamDic: [WNURLParameterKey.locationAddress: [address.encodeToUrl],
-                                         WNURLParameterKey.categories: [categoryId],
-                                         WNURLParameterKey.expand: [WNURLParameterValue.organizer.rawValue, WNURLParameterValue.venue.rawValue, WNURLParameterValue.category.rawValue],
-                                         WNURLParameterKey.sortBy: [WNURLParameterValue.date.rawValue]])
+        var paramDic: [WNURLParameterKey: [String]] = [WNURLParameterKey: [String]]()
+        
+        paramDic[WNURLParameterKey.locationAddress] = [address.encodeToUrl]
+        paramDic[WNURLParameterKey.categories] = [categoryId]
+        
+        paramDic = paramDic.merging(self.getDefaultRequestParamSearch(), uniquingKeysWith: { (_, last) in last })
+        
+        self.searchEvents(fromParamDic: paramDic)
     }
     
     private func searchEvents(fromParamDic paramDic: [WNURLParameterKey: [String]]) {
@@ -130,5 +148,11 @@ class WNDataController: NSObject {
         }
         
         return requestUrl
+    }
+    
+    private func getDefaultRequestParamSearch() -> [WNURLParameterKey: [String]] {
+        return [WNURLParameterKey.expand: [WNURLParameterValue.organizer.rawValue,
+                                           WNURLParameterValue.venue.rawValue, WNURLParameterValue.category.rawValue],
+                WNURLParameterKey.sortBy: [WNURLParameterValue.date.rawValue]]
     }
 }

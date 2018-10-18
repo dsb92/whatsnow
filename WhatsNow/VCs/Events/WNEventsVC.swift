@@ -13,6 +13,19 @@ class WNEventsVC: WNBaseVC {
     
     @IBOutlet weak var eventCollectionView: WNEventsCollectionView!
     
+    @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var distanceSlider: UISlider!
+    @IBOutlet weak var distanceApplyFilterButton: WNGradientButton!
+    @IBOutlet weak var distanceSliderValueView: WNGradientView!
+    @IBOutlet weak var distanceSliderValueLabel: UILabel!
+    
+    @IBOutlet var filterViewTopConstraint: NSLayoutConstraint!
+    
+    private var FILTER_HEIGHT: CGFloat = 200
+    
+    private var defaultDistanceRadiusInKm: CGFloat = 25
+    private var showingFilter: Bool = false
+    
     var cityForCurrentEvents: String = String() {
         didSet {
             self.title = self.cityForCurrentEvents
@@ -27,6 +40,7 @@ class WNEventsVC: WNBaseVC {
         self.appDelegate.tabBarCon.delegate = self
         
         self.eventCollectionView.eventsCollectionViewDelegate = self
+        self.eventCollectionView.eventsCollectionViewScrollViewDelegate = self
         self.eventCollectionView.delaysContentTouches = false
         
         if self.requestMyLocation {
@@ -35,14 +49,98 @@ class WNEventsVC: WNBaseVC {
         }
     }
     
+    override func setupUI() {
+        super.setupUI()
+        
+        self.distanceSliderValueView.setGradient(withColors: WNFormatUtil.themeGradient())
+        self.distanceSliderValueView.layer.cornerRadius = self.distanceSliderValueView.bounds.size.height / 2
+        self.distanceSliderValueView.clipsToBounds = true
+        
+        self.distanceSliderValueLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+        self.distanceSliderValueLabel.textColor = UIColor.white
+        
+        self.distanceSlider.tintColor = WNFormatUtil.themeGradient().last
+        
+        self.distanceApplyFilterButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        self.distanceApplyFilterButton.titleLabel?.textColor = UIColor.white
+        self.distanceApplyFilterButton.setTitleColor(UIColor.white, for: .normal)
+        self.distanceApplyFilterButton.titleLabel?.text = "filter_button_apply".localized
+        self.distanceApplyFilterButton.setTitle("filter_button_apply".localized, for: .normal)
+        self.distanceApplyFilterButton.setGradient(withColors: WNFormatUtil.themeGradient())
+        
+        self.setFilter(distanceRadiusInKm: 25)
+        
+        self.showFilter(false)
+    }
+    
     override func assignDelegates() {
         super.assignDelegates()
         
         self.dataCon.eventsDelegate = self
     }
     
+    private func showFilter(_ show: Bool) {
+        self.showingFilter = show
+        
+        if show {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter_black.png"), style: .plain, target: self, action: #selector(self.didTapCloseFilterButton))
+            
+        } else {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "icon_filter_black.png"), style: .plain, target: self, action: #selector(self.didTapFilterButton))
+        }
+        
+        self.view.layoutIfNeeded()
+        
+        self.layoutFilter()
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveLinear, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    private func layoutFilter() {
+        if let navigationBar: UINavigationBar = self.navigationController?.navigationBar {
+            let height: CGFloat = UIApplication.shared.statusBarFrame.size.height + navigationBar.bounds.height
+            self.filterViewTopConstraint.constant = self.showingFilter ? height : -FILTER_HEIGHT
+        }
+    }
+    
     @objc func refreshData() {
         self.dataCon.searchEvents(fromAddress: self.cityForCurrentEvents)
+    }
+    
+    private func setFilter(distanceRadiusInKm: Float) {
+        self.distanceSliderValueLabel.text = "\(Int(distanceRadiusInKm)) km"
+        self.distanceSlider.value = distanceRadiusInKm
+    }
+    
+    @objc func didTapFilterButton() {
+        self.showFilter(true)
+    }
+    
+    @objc func didTapCloseFilterButton() {
+        self.showFilter(false)
+    }
+    
+    @IBAction func didTapApplyFilterButton(_ sender: UIButton) {
+        WNHapticFeedBackUtil.itemSelected()
+        
+        self.showFilter(false)
+        
+        let distanceValue: Int = Int(self.distanceSlider.value)
+        self.dataCon.searchEvents(fromAddress: self.cityForCurrentEvents, andRadiusInKm: distanceValue)
+    }
+    
+    @IBAction func distanceSliderDidChangeValue(_ sender: UISlider) {
+        if sender.value.truncatingRemainder(dividingBy: 1.0) == 0.0 {
+            WNHapticFeedBackUtil.itemSelected()
+        }
+        
+        let step: Float = 1
+        let roundedValue = round(sender.value / step) * step
+        sender.value = roundedValue
+        
+        self.setFilter(distanceRadiusInKm: sender.value)
     }
 }
 
@@ -114,5 +212,16 @@ extension WNEventsVC: WNEventsCollectionViewDelegate {
     
     func eventsCollectionViewDidSelectEvent(_ sender: WNEventsCollectionView, event: WNEvent) {
         self.presentEventDetail(withEvent: event)
+    }
+}
+
+// MARK: - WNEventsCollectionViewScrollViewDelegate
+extension WNEventsVC: WNEventsCollectionViewScrollViewDelegate {
+    func eventsCollectionViewDidBeginDragging(_ sender: WNEventsCollectionView) {
+        self.showFilter(self.showingFilter)
+    }
+    
+    func eventsCollectionViewDidScroll(_ sender: WNEventsCollectionView) {
+        self.showFilter(self.showingFilter)
     }
 }

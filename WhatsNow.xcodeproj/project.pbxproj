@@ -48,6 +48,9 @@
 		4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF792152CB6A00D5D542 /* WNAddres.swift */; };
 		4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF7A2152CB6B00D5D542 /* WNVenue.swift */; };
 		4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4631AF812152D83900D5D542 /* WNFormatUtil.swift */; };
+		465B1E3D2178CD0400200A2D /* WNGradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B1E3C2178CD0400200A2D /* WNGradientButton.swift */; };
+		465B1E3F2178D13400200A2D /* WNRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B1E3E2178D13400200A2D /* WNRoundedButton.swift */; };
+		465B1E412178D79B00200A2D /* WNGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B1E402178D79B00200A2D /* WNGradientView.swift */; };
 		465BCE07216D2C490081967B /* WNOrganizerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465BCE05216D2C490081967B /* WNOrganizerVC.swift */; };
 		465BCE08216D2C490081967B /* WNOrganizerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 465BCE06216D2C490081967B /* WNOrganizerVC.xib */; };
 		4670E99E21766C360090BF99 /* WNHapticFeedBackUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */; };
@@ -107,6 +110,9 @@
 		4631AF792152CB6A00D5D542 /* WNAddres.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNAddres.swift; sourceTree = "<group>"; };
 		4631AF7A2152CB6B00D5D542 /* WNVenue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WNVenue.swift; sourceTree = "<group>"; };
 		4631AF812152D83900D5D542 /* WNFormatUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNFormatUtil.swift; sourceTree = "<group>"; };
+		465B1E3C2178CD0400200A2D /* WNGradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNGradientButton.swift; sourceTree = "<group>"; };
+		465B1E3E2178D13400200A2D /* WNRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNRoundedButton.swift; sourceTree = "<group>"; };
+		465B1E402178D79B00200A2D /* WNGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNGradientView.swift; sourceTree = "<group>"; };
 		465BCE05216D2C490081967B /* WNOrganizerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNOrganizerVC.swift; sourceTree = "<group>"; };
 		465BCE06216D2C490081967B /* WNOrganizerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNOrganizerVC.xib; sourceTree = "<group>"; };
 		4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNHapticFeedBackUtil.swift; sourceTree = "<group>"; };
@@ -202,8 +208,10 @@
 		4601DC55214EA61500DE7CCC /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				465B1E3B2178CCF100200A2D /* Buttons */,
 				4601DC82214EAD7600DE7CCC /* CollectionViews */,
 				4601DC7A214EA96D00DE7CCC /* EventCard */,
+				465B1E402178D79B00200A2D /* WNGradientView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -363,6 +371,15 @@
 				4603C5602150365500C23E7A /* WNProfileVC.xib */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		465B1E3B2178CCF100200A2D /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				465B1E3C2178CD0400200A2D /* WNGradientButton.swift */,
+				465B1E3E2178D13400200A2D /* WNRoundedButton.swift */,
+			);
+			path = Buttons;
 			sourceTree = "<group>";
 		};
 		465BCE04216D2BF80081967B /* Organizer */ = {
@@ -544,12 +561,14 @@
 				4601DC9A214EDE8A00DE7CCC /* WNLogo.swift in Sources */,
 				4601DC9C214EDE8A00DE7CCC /* WNCropMask.swift in Sources */,
 				4603C557215035B900C23E7A /* WNNearMeVC.swift in Sources */,
+				465B1E3D2178CD0400200A2D /* WNGradientButton.swift in Sources */,
 				4631AF822152D83900D5D542 /* WNFormatUtil.swift in Sources */,
 				4601DC9D214EDE8A00DE7CCC /* WNTopLeft.swift in Sources */,
 				4601DC80214EA9F800DE7CCC /* WNEventDetailVC.swift in Sources */,
 				4601DC9B214EDE8A00DE7CCC /* WNOriginal.swift in Sources */,
 				4601DC8C214EAE4200DE7CCC /* WNEventCollectionViewCell.swift in Sources */,
 				465BCE07216D2C490081967B /* WNOrganizerVC.swift in Sources */,
+				465B1E3F2178D13400200A2D /* WNRoundedButton.swift in Sources */,
 				4631AF7C2152CB6B00D5D542 /* WNVenue.swift in Sources */,
 				4601DC91214EBD2700DE7CCC /* WNRoundedCardWrapperView.swift in Sources */,
 				4601DC63214EA67500DE7CCC /* WNEvent.swift in Sources */,
@@ -571,6 +590,7 @@
 				4601DC99214EDE8A00DE7CCC /* WNLogoParser.swift in Sources */,
 				4631AF7B2152CB6B00D5D542 /* WNAddres.swift in Sources */,
 				4670E99E21766C360090BF99 /* WNHapticFeedBackUtil.swift in Sources */,
+				465B1E412178D79B00200A2D /* WNGradientView.swift in Sources */,
 				4603C5612150365500C23E7A /* WNProfileVC.swift in Sources */,
 				4603C5522150352E00C23E7A /* WNSearchVC.swift in Sources */,
 			);

@@ -15,6 +15,11 @@ protocol WNEventsCollectionViewDelegate: class {
     func eventsCollectionViewDidTapShareEvent(_ sender: WNEventsCollectionView, event: WNEvent)
 }
 
+protocol WNEventsCollectionViewScrollViewDelegate: class {
+    func eventsCollectionViewDidBeginDragging(_ sender: WNEventsCollectionView)
+    func eventsCollectionViewDidScroll(_ sender: WNEventsCollectionView)
+}
+
 class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var eventsDic: [String: [WNEvent]] = [String: [WNEvent]]() {
@@ -30,6 +35,7 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     let EVENT_CELL_SECTION_HEADER_IDENTIFIER: String = String(describing: WNEventHeaderView.self)
     
     weak var eventsCollectionViewDelegate: WNEventsCollectionViewDelegate?
+    weak var eventsCollectionViewScrollViewDelegate: WNEventsCollectionViewScrollViewDelegate?
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: frame, collectionViewLayout: layout)
@@ -155,6 +161,14 @@ class WNEventsCollectionView: UICollectionView, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         
         return CGSize(width: collectionView.bounds.size.width, height: 60)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.eventsCollectionViewScrollViewDelegate?.eventsCollectionViewDidBeginDragging(self)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.eventsCollectionViewScrollViewDelegate?.eventsCollectionViewDidScroll(self)
     }
 }
 
