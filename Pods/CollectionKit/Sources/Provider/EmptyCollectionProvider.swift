@@ -9,7 +9,7 @@
 import UIKit
 
 open class EmptyCollectionProvider: ItemProvider, CollectionReloadable {
-  open var identifier: String?
+  public var identifier: String?
 
   public init(identifier: String? = nil) {
     self.identifier = identifier

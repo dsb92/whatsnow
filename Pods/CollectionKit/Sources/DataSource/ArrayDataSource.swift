@@ -9,12 +9,12 @@
 import Foundation
 
 open class ArrayDataSource<Data>: DataSource<Data> {
-  open var data: [Data] {
+  public var data: [Data] {
     didSet {
       setNeedsReload()
     }
   }
-  open var identifierMapper: (Int, Data) -> String {
+  public var identifierMapper: (Int, Data) -> String {
     didSet {
       setNeedsReload()
     }

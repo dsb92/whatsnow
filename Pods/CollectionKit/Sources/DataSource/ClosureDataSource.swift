@@ -9,12 +9,12 @@
 import Foundation
 
 open class ClosureDataSource<Data>: DataSource<Data> {
-  open var getter: () -> [Data] {
+  public var getter: () -> [Data] {
     didSet {
       setNeedsReload()
     }
   }
-  open var identifierMapper: (Int, Data) -> String {
+  public var identifierMapper: (Int, Data) -> String {
     didSet {
       setNeedsReload()
     }
