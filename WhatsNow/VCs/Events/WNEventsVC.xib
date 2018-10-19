@@ -18,6 +18,7 @@
                 <outlet property="eventCollectionView" destination="cen-ON-2H9" id="Avt-XK-A4v"/>
                 <outlet property="filterView" destination="uTw-1C-W2E" id="UuQ-hl-0GI"/>
                 <outlet property="filterViewTopConstraint" destination="Vuy-8C-QJ0" id="6br-ru-faC"/>
+                <outlet property="noResultsView" destination="83E-Kf-Oxc" id="eGv-K0-4qE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,6 +37,10 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="83E-Kf-Oxc" customClass="WNNoResultsView" customModule="WhatsNow" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTw-1C-W2E">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
                     <subviews>
@@ -108,12 +113,16 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="83E-Kf-Oxc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0ws-qo-E1G"/>
                 <constraint firstAttribute="trailing" secondItem="cen-ON-2H9" secondAttribute="trailing" id="Csh-kY-WPa"/>
                 <constraint firstAttribute="bottom" secondItem="cen-ON-2H9" secondAttribute="bottom" id="Gcw-U4-X22"/>
+                <constraint firstItem="83E-Kf-Oxc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Lue-k9-tcY"/>
                 <constraint firstItem="uTw-1C-W2E" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="MtY-FB-kp5"/>
+                <constraint firstAttribute="bottom" secondItem="83E-Kf-Oxc" secondAttribute="bottom" id="Pfi-VS-IlT"/>
                 <constraint firstAttribute="trailing" secondItem="uTw-1C-W2E" secondAttribute="trailing" id="QM4-WE-7ct"/>
                 <constraint firstItem="uTw-1C-W2E" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Vuy-8C-QJ0"/>
                 <constraint firstItem="cen-ON-2H9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="XKa-ja-H8k"/>
+                <constraint firstAttribute="trailing" secondItem="83E-Kf-Oxc" secondAttribute="trailing" id="fKB-wj-46d"/>
                 <constraint firstItem="cen-ON-2H9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zI0-Ac-Scp"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>

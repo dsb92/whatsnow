@@ -12,6 +12,7 @@ import Hero
 class WNEventsVC: WNBaseVC {
     
     @IBOutlet weak var eventCollectionView: WNEventsCollectionView!
+    @IBOutlet weak var noResultsView: WNNoResultsView!
     
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var distanceSlider: UISlider!
@@ -31,6 +32,7 @@ class WNEventsVC: WNBaseVC {
     var cityForCurrentEvents: String = String() {
         didSet {
             self.title = self.cityForCurrentEvents
+            self.noResultsView.sublabel.text = "no_events_message".localized.replacingOccurrences(of: "X", with: self.cityForCurrentEvents)
         }
     }
     
@@ -71,6 +73,8 @@ class WNEventsVC: WNBaseVC {
         
         self.setFilter(distanceRadiusInKm: self.defaultDistanceRadiusInKm)
         
+        self.noResultsView.label.text = "no_events_title".localized
+        
         self.showFilter(false)
     }
     
@@ -97,6 +101,14 @@ class WNEventsVC: WNBaseVC {
         UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveLinear, animations: {
             self.view.layoutIfNeeded()
         }, completion: nil)
+    }
+    
+    private func showNoResults(_ show: Bool) {
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .transitionCrossDissolve, animations: {
+            self.noResultsView.alpha = show ? 1 : 0
+            self.eventCollectionView.alpha = show ? 0 : 1
+        }) { (_) in
+        }
     }
     
     private func layoutFilter() {
@@ -131,10 +143,12 @@ class WNEventsVC: WNBaseVC {
         WNHapticFeedBackUtil.itemSelected()
         
         self.showFilter(false)
+        self.showNoResults(false)
+        
+        self.progressSpinner.startAnimating()
         
         let distanceValue: Int = Int(self.distanceSlider.value)
         
-        self.progressSpinner.startAnimating()
         self.dataCon.searchEvents(fromAddress: self.cityForCurrentEvents, andRadiusInKm: distanceValue)
     }
     
@@ -197,6 +211,8 @@ extension WNEventsVC: WNDataControllerEventsDelegate {
         
         self.eventCollectionView.sortedKeys = sortedKeys
         self.eventCollectionView.eventsDic = eventsDictionary
+        
+        self.showNoResults(events.isEmpty)
     }
 }
 

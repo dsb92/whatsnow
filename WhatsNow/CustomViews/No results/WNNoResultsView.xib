@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WNNoResultsView" customModule="WhatsNow" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="t6q-GO-3R2"/>
+                <outlet property="label" destination="pJH-1x-2Ol" id="r8Y-E3-IAA"/>
+                <outlet property="sublabel" destination="I7b-1Z-5TE" id="olA-DS-TJe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingen resultater" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJH-1x-2Ol">
+                    <rect key="frame" x="0.0" y="315.5" width="375" height="36"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="for &quot;kasdksad&quot;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7b-1Z-5TE">
+                    <rect key="frame" x="0.0" y="359.5" width="375" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="I7b-1Z-5TE" firstAttribute="centerX" secondItem="pJH-1x-2Ol" secondAttribute="centerX" id="SCC-BI-xjf"/>
+                <constraint firstItem="I7b-1Z-5TE" firstAttribute="top" secondItem="pJH-1x-2Ol" secondAttribute="bottom" constant="8" id="SdB-RY-0fI"/>
+                <constraint firstAttribute="trailing" secondItem="pJH-1x-2Ol" secondAttribute="trailing" id="TIx-wc-ynu"/>
+                <constraint firstItem="pJH-1x-2Ol" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fOk-VU-rVw"/>
+                <constraint firstItem="pJH-1x-2Ol" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="gqM-JA-wsZ"/>
+                <constraint firstAttribute="trailing" secondItem="I7b-1Z-5TE" secondAttribute="trailing" id="nsU-ts-Po3"/>
+                <constraint firstItem="I7b-1Z-5TE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wNy-JC-pVH"/>
+                <constraint firstItem="pJH-1x-2Ol" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="z1S-Az-NqE"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

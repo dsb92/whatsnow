@@ -52,6 +52,8 @@
 		465B1E3F2178D13400200A2D /* WNRoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B1E3E2178D13400200A2D /* WNRoundedButton.swift */; };
 		465B1E412178D79B00200A2D /* WNGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B1E402178D79B00200A2D /* WNGradientView.swift */; };
 		465B1E4C2178F96900200A2D /* WNThreeCircleSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B1E4B2178F96900200A2D /* WNThreeCircleSpinner.swift */; };
+		465B1E5B2179F20000200A2D /* WNNoResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465B1E5A2179F20000200A2D /* WNNoResultsView.swift */; };
+		465B1E5D2179F21000200A2D /* WNNoResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 465B1E5C2179F21000200A2D /* WNNoResultsView.xib */; };
 		465BCE07216D2C490081967B /* WNOrganizerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465BCE05216D2C490081967B /* WNOrganizerVC.swift */; };
 		465BCE08216D2C490081967B /* WNOrganizerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 465BCE06216D2C490081967B /* WNOrganizerVC.xib */; };
 		4670E99E21766C360090BF99 /* WNHapticFeedBackUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */; };
@@ -115,6 +117,8 @@
 		465B1E3E2178D13400200A2D /* WNRoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNRoundedButton.swift; sourceTree = "<group>"; };
 		465B1E402178D79B00200A2D /* WNGradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNGradientView.swift; sourceTree = "<group>"; };
 		465B1E4B2178F96900200A2D /* WNThreeCircleSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNThreeCircleSpinner.swift; sourceTree = "<group>"; };
+		465B1E5A2179F20000200A2D /* WNNoResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNNoResultsView.swift; sourceTree = "<group>"; };
+		465B1E5C2179F21000200A2D /* WNNoResultsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNNoResultsView.xib; sourceTree = "<group>"; };
 		465BCE05216D2C490081967B /* WNOrganizerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNOrganizerVC.swift; sourceTree = "<group>"; };
 		465BCE06216D2C490081967B /* WNOrganizerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNOrganizerVC.xib; sourceTree = "<group>"; };
 		4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNHapticFeedBackUtil.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 		4601DC55214EA61500DE7CCC /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				465B1E592179F1E800200A2D /* No results */,
 				465B1E4A2178F94300200A2D /* Spinner */,
 				465B1E3B2178CCF100200A2D /* Buttons */,
 				4601DC82214EAD7600DE7CCC /* CollectionViews */,
@@ -393,6 +398,15 @@
 			path = Spinner;
 			sourceTree = "<group>";
 		};
+		465B1E592179F1E800200A2D /* No results */ = {
+			isa = PBXGroup;
+			children = (
+				465B1E5A2179F20000200A2D /* WNNoResultsView.swift */,
+				465B1E5C2179F21000200A2D /* WNNoResultsView.xib */,
+			);
+			path = "No results";
+			sourceTree = "<group>";
+		};
 		465BCE04216D2BF80081967B /* Organizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +513,7 @@
 				46B2E5F0215BF8E100F81537 /* WNReadMoreVC.xib in Resources */,
 				4601DC8D214EAE4200DE7CCC /* WNEventCollectionViewCell.xib in Resources */,
 				4601DC6A214EA77C00DE7CCC /* Localizable.strings in Resources */,
+				465B1E5D2179F21000200A2D /* WNNoResultsView.xib in Resources */,
 				4603C558215035B900C23E7A /* WNNearMeVC.xib in Resources */,
 				465BCE08216D2C490081967B /* WNOrganizerVC.xib in Resources */,
 				4601DC79214EA82500DE7CCC /* WNEventsVC.xib in Resources */,
@@ -567,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4601DC74214EA7DB00DE7CCC /* WNBaseVC.swift in Sources */,
+				465B1E5B2179F20000200A2D /* WNNoResultsView.swift in Sources */,
 				4601DC64214EA67500DE7CCC /* WNEventsParser.swift in Sources */,
 				4631AF782152C90B00D5D542 /* WNOrganizer.swift in Sources */,
 				4601DCA0214EE27200DE7CCC /* WNExtensions.swift in Sources */,

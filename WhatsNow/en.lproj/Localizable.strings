@@ -23,3 +23,7 @@
 "events_like_this" = "More events like this";
 "by" = "by X";
 "filter_button_apply" = "Apply";
+"no_results_title" = "No results";
+"no_results_message" = "For \"X\"";
+"no_events_title" = "No events found";
+"no_events_message" = "For \"X\"";

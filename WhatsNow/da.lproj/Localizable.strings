@@ -23,3 +23,7 @@
 "events_like_this" = "Flere begivenheder som denne";
 "by" = "af X";
 "filter_button_apply" = "Vis";
+"no_results_title" = "Ingen resultater";
+"no_results_message" = "For \"X\"";
+"no_events_title" = "Ingen begivenheder fundet";
+"no_events_message" = "For \"X\"";
