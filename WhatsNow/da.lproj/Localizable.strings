@@ -6,6 +6,11 @@
   Copyright © 2018 Dabdeveloper. All rights reserved.
 */
 
+"home" = "Hjem";
+"search" = "Søg";
+"near_me" = "Nær mig";
+"favorites" = "Favoritter";
+"profile" = "Profil";
 "free" = "Gratis";
 "ticket_master_eventbrite" = "hos EventBrite";
 "read_more_button" = "Læs mere";

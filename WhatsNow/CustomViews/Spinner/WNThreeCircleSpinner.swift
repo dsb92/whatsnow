@@ -24,6 +24,6 @@ class WNThreeCircleSpinner: ALThreeCircleSpinner {
     }
     
     private func commonInit() {
-        self.tintColor = WNFormatUtil.themeGradient().last
+        self.tintColor = WNFormatUtil.themeColorBlue()
     }
 }

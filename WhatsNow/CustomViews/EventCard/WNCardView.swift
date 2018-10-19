@@ -64,7 +64,7 @@ class WNCardView: UIView {
         self.subtitleLabel.textColor = UIColor.gray
         self.subtitleLabel.sizeToFit()
         
-        self.favButton.setImage(UIImage(named: "icon_heart_black.png")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.favButton.setImage(UIImage(named: "icon_heart_filled_black.png")?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.favButton.addTarget(self, action: #selector(self.didTapFavoriteButton), for: .touchUpInside)
         self.favButton.imageView?.tintColor = UIColor.lightGray
         WNFormatUtil.formatActionButton(self.favButton)

@@ -37,28 +37,47 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backgroundColor = .white
         // Set translucent. (Default value is already true, so this can be removed if desired.)
         UINavigationBar.appearance().isTranslucent = true
+        
+        // Tabbar selected item color
+        UITabBar.appearance().tintColor = WNFormatUtil.themeColorBlue()
+        
+        // Tabbar unselected item color
+        UITabBar.appearance().unselectedItemTintColor = UIColor.darkGray
+        
+        // Navigation item color
+        UIBarButtonItem.appearance().tintColor = WNFormatUtil.themeColorBlue()
     }
     
     func setupTabBar() {
         let eventsVc = WNEventsVC()
         let eventsNavCon = UINavigationController(rootViewController: eventsVc)
-        eventsVc.tabBarItem = UITabBarItem(title: "Hjem", image: UIImage(), selectedImage: UIImage())
+        eventsVc.tabBarItem = UITabBarItem(title: "home".localized, image: UIImage(named: "icon_home_outline_black.png"), selectedImage: UIImage(named: "icon_home_filled_black.png"))
+        eventsVc.tabBarItem.tabBarItemShowingOnlyImage()
+        eventsNavCon.navigationBar.prefersLargeTitles = true
         
         let searchVc = WNSearchVC()
         let searchNavCon = UINavigationController(rootViewController: searchVc)
-        searchNavCon.tabBarItem = UITabBarItem(title: "Søg", image: UIImage(), selectedImage: UIImage())
+        searchNavCon.tabBarItem = UITabBarItem(title: "search".localized, image: UIImage(named: "icon_search_black.png"), selectedImage: UIImage(named: "icon_search_black.png"))
+        searchNavCon.tabBarItem.tabBarItemShowingOnlyImage()
+        searchNavCon.navigationBar.prefersLargeTitles = true
         
         let nearMeVc = WNNearMeVC()
         let nearMeNavCon = UINavigationController(rootViewController: nearMeVc)
-        nearMeNavCon.tabBarItem = UITabBarItem(title: "Nær mig", image: UIImage(), selectedImage: UIImage())
+        nearMeNavCon.tabBarItem = UITabBarItem(title: "near_me".localized, image: UIImage(named: "icon_marker_outline_black.png"), selectedImage: UIImage(named: "icon_marker_filled_black.png"))
+        nearMeNavCon.tabBarItem.tabBarItemShowingOnlyImage()
+        nearMeNavCon.navigationBar.prefersLargeTitles = true
         
         let favoritesVc = WNFavoritesVC()
         let favoritesNavCon = UINavigationController(rootViewController: favoritesVc)
-        favoritesNavCon.tabBarItem = UITabBarItem(title: "Favoritter", image: UIImage(), selectedImage: UIImage())
+        favoritesNavCon.tabBarItem = UITabBarItem(title: "favorites".localized, image: UIImage(named: "icon_heart_outline_black.png"), selectedImage: UIImage(named: "icon_heart_filled_black.png"))
+        favoritesNavCon.tabBarItem.tabBarItemShowingOnlyImage()
+        favoritesNavCon.navigationBar.prefersLargeTitles = true
         
         let profileVc = WNProfileVC()
         let profileNavCon = UINavigationController(rootViewController: profileVc)
-        profileNavCon.tabBarItem = UITabBarItem(title: "Profil", image: UIImage(), selectedImage: UIImage())
+        profileNavCon.tabBarItem = UITabBarItem(title: "profile".localized, image: UIImage(named: "icon_profile_outline_black.png"), selectedImage: UIImage(named: "icon_profile_filled_black.png"))
+        profileNavCon.tabBarItem.tabBarItemShowingOnlyImage()
+        profileNavCon.navigationBar.prefersLargeTitles = true
         
         self.tabBarCon.setViewControllers([eventsNavCon, searchNavCon, nearMeNavCon, favoritesNavCon, profileNavCon], animated: true)
     }

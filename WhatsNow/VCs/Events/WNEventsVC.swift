@@ -23,8 +23,10 @@ class WNEventsVC: WNBaseVC {
     
     private var FILTER_HEIGHT: CGFloat = 200
     
-    private var defaultDistanceRadiusInKm: CGFloat = 25
+    private var defaultDistanceRadiusInKm: Float = 25
     private var showingFilter: Bool = false
+    
+    private var currentDistanceRadiusInKm: Float = 0
     
     var cityForCurrentEvents: String = String() {
         didSet {
@@ -58,7 +60,7 @@ class WNEventsVC: WNBaseVC {
         self.distanceSliderValueLabel.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
         self.distanceSliderValueLabel.textColor = UIColor.white
         
-        self.distanceSlider.tintColor = WNFormatUtil.themeGradient().last
+        self.distanceSlider.tintColor = WNFormatUtil.themeColorBlue()
         
         self.distanceApplyFilterButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         self.distanceApplyFilterButton.titleLabel?.textColor = UIColor.white
@@ -67,7 +69,7 @@ class WNEventsVC: WNBaseVC {
         self.distanceApplyFilterButton.setTitle("filter_button_apply".localized, for: .normal)
         self.distanceApplyFilterButton.setGradient(withColors: WNFormatUtil.themeGradient())
         
-        self.setFilter(distanceRadiusInKm: 25)
+        self.setFilter(distanceRadiusInKm: self.defaultDistanceRadiusInKm)
         
         self.showFilter(false)
     }
@@ -114,10 +116,14 @@ class WNEventsVC: WNBaseVC {
     }
     
     @objc func didTapFilterButton() {
+        WNHapticFeedBackUtil.itemSelected()
+        
         self.showFilter(true)
     }
     
     @objc func didTapCloseFilterButton() {
+        WNHapticFeedBackUtil.itemSelected()
+        
         self.showFilter(false)
     }
     
@@ -133,13 +139,14 @@ class WNEventsVC: WNBaseVC {
     }
     
     @IBAction func distanceSliderDidChangeValue(_ sender: UISlider) {
-        if sender.value.truncatingRemainder(dividingBy: 1.0) == 0.0 {
-            WNHapticFeedBackUtil.itemSelected()
-        }
-        
         let step: Float = 1
         let roundedValue = round(sender.value / step) * step
         sender.value = roundedValue
+        
+        if self.currentDistanceRadiusInKm != roundedValue {
+            self.currentDistanceRadiusInKm = roundedValue
+            WNHapticFeedBackUtil.itemSelected()
+        }
         
         self.setFilter(distanceRadiusInKm: sender.value)
     }
@@ -222,10 +229,10 @@ extension WNEventsVC: WNEventsCollectionViewDelegate {
 // MARK: - WNEventsCollectionViewScrollViewDelegate
 extension WNEventsVC: WNEventsCollectionViewScrollViewDelegate {
     func eventsCollectionViewDidBeginDragging(_ sender: WNEventsCollectionView) {
-        self.showFilter(self.showingFilter)
+        self.layoutFilter()
     }
     
     func eventsCollectionViewDidScroll(_ sender: WNEventsCollectionView) {
-        self.showFilter(self.showingFilter)
+        self.layoutFilter()
     }
 }

@@ -55,7 +55,6 @@ class WNBaseVC: UIViewController {
     
     func setupUI() {
         self.view.backgroundColor = .white
-        self.navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     func presentEventDetail(withEvent event: WNEvent) {

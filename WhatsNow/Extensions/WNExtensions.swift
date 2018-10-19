@@ -8,6 +8,16 @@
 
 import UIKit
 
+extension UITabBarItem {
+    func tabBarItemShowingOnlyImage() {
+        // offset to center
+        let offset: CGFloat = 6
+        self.imageInsets = UIEdgeInsets(top: offset, left: 0, bottom: -offset, right: 0)
+        // displace to hide
+        self.titlePositionAdjustment = UIOffset(horizontal:0,vertical:30000)
+    }
+}
+
 extension Date {
     func dateWithoutTimeString(dateFormat: DateFormatter.Style) -> String {
         let dateFormatter = DateFormatter()
@@ -91,14 +101,16 @@ extension UITextView {
         let layoutManager = self.layoutManager
         let textStorage = layoutManager.textStorage
         let charIndex = (textStorage?.length ?? 1) - 1
-        let glyphIndex = layoutManager.glyphIndexForCharacter(at: charIndex)
-        let lineRect = layoutManager.lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: nil)
-        var glyphLoc = layoutManager.location(forGlyphAt: glyphIndex)
-        glyphLoc.x += lineRect.minX
-        glyphLoc.y += lineRect.minY
-        if glyphLoc.x >= self.bounds.width ||
-            glyphLoc.y >= self.bounds.height {
-            return true
+        if charIndex > 0 {
+            let glyphIndex = layoutManager.glyphIndexForCharacter(at: charIndex)
+            let lineRect = layoutManager.lineFragmentRect(forGlyphAt: glyphIndex, effectiveRange: nil)
+            var glyphLoc = layoutManager.location(forGlyphAt: glyphIndex)
+            glyphLoc.x += lineRect.minX
+            glyphLoc.y += lineRect.minY
+            if glyphLoc.x >= self.bounds.width ||
+                glyphLoc.y >= self.bounds.height {
+                return true
+            }
         }
         
         return false

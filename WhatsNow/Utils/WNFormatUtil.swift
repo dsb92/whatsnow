@@ -12,8 +12,8 @@ class WNFormatUtil {
     
     // MARK: - Gradients
     static func themeGradient() -> [UIColor] {
-        let topGradient: UIColor = UIColor(red: 18/255, green: 183/255, blue: 231/255, alpha: 1.0)
-        let bottomGradient: UIColor = UIColor(red: 16/255, green: 140/255, blue: 238/255, alpha: 1.0)
+        let topGradient: UIColor = self.themeColorLightBlue()
+        let bottomGradient: UIColor = self.themeColorBlue()
         
         return [topGradient, bottomGradient]
     }
@@ -26,6 +26,14 @@ class WNFormatUtil {
         view.layer.insertSublayer(gradientLayer, at: 0)
         
         return gradientLayer
+    }
+    
+    static func themeColorBlue() -> UIColor {
+        return UIColor(red: 16/255, green: 140/255, blue: 238/255, alpha: 1.0)
+    }
+    
+    static func themeColorLightBlue() -> UIColor {
+        return UIColor(red: 18/255, green: 183/255, blue: 231/255, alpha: 1.0)
     }
     
     // MARK: - Buttons
