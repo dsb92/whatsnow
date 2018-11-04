@@ -30,6 +30,12 @@ class WNGradientButton: WNRoundedButton {
     
     override func commonInit() {
         super.commonInit()
+        
+        // Default values
+        self.setGradient(withColors: WNFormatUtil.themeGradient())
+        
+        self.setTitleColor(UIColor.white, for: .normal)
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
     }
     
     func setGradient(withColors colors: [UIColor]) {

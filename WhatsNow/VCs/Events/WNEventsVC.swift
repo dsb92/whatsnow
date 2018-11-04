@@ -65,11 +65,7 @@ class WNEventsVC: WNBaseVC {
         self.distanceSlider.tintColor = WNFormatUtil.themeColorBlue()
         
         self.distanceApplyFilterButton.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
-        self.distanceApplyFilterButton.titleLabel?.textColor = UIColor.white
-        self.distanceApplyFilterButton.setTitleColor(UIColor.white, for: .normal)
-        self.distanceApplyFilterButton.titleLabel?.text = "filter_button_apply".localized
         self.distanceApplyFilterButton.setTitle("filter_button_apply".localized, for: .normal)
-        self.distanceApplyFilterButton.setGradient(withColors: WNFormatUtil.themeGradient())
         
         self.setFilter(distanceRadiusInKm: self.defaultDistanceRadiusInKm)
         

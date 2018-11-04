@@ -58,6 +58,8 @@
 		4670E99E21766C360090BF99 /* WNHapticFeedBackUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */; };
 		46885B0A218F24D700F487A8 /* WNSplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46885B08218F24D700F487A8 /* WNSplashVC.swift */; };
 		46885B0B218F24D700F487A8 /* WNSplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46885B09218F24D700F487A8 /* WNSplashVC.xib */; };
+		46885B0E218F3DF900F487A8 /* WNPickLocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46885B0C218F3DF900F487A8 /* WNPickLocationVC.swift */; };
+		46885B0F218F3DF900F487A8 /* WNPickLocationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46885B0D218F3DF900F487A8 /* WNPickLocationVC.xib */; };
 		46B2E5EF215BF8E100F81537 /* WNReadMoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */; };
 		46B2E5F0215BF8E100F81537 /* WNReadMoreVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */; };
 		46B2E5F8215C06EA00F81537 /* WNEventHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */; };
@@ -124,6 +126,8 @@
 		4670E99D21766C360090BF99 /* WNHapticFeedBackUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNHapticFeedBackUtil.swift; sourceTree = "<group>"; };
 		46885B08218F24D700F487A8 /* WNSplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNSplashVC.swift; sourceTree = "<group>"; };
 		46885B09218F24D700F487A8 /* WNSplashVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNSplashVC.xib; sourceTree = "<group>"; };
+		46885B0C218F3DF900F487A8 /* WNPickLocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNPickLocationVC.swift; sourceTree = "<group>"; };
+		46885B0D218F3DF900F487A8 /* WNPickLocationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNPickLocationVC.xib; sourceTree = "<group>"; };
 		46B2E5ED215BF8E100F81537 /* WNReadMoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNReadMoreVC.swift; sourceTree = "<group>"; };
 		46B2E5EE215BF8E100F81537 /* WNReadMoreVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WNReadMoreVC.xib; sourceTree = "<group>"; };
 		46B2E5F6215C06EA00F81537 /* WNEventHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WNEventHeaderView.swift; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 			children = (
 				4603C5502150352E00C23E7A /* WNSearchVC.swift */,
 				4603C5512150352E00C23E7A /* WNSearchVC.xib */,
+				46885B0C218F3DF900F487A8 /* WNPickLocationVC.swift */,
+				46885B0D218F3DF900F487A8 /* WNPickLocationVC.xib */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46885B0F218F3DF900F487A8 /* WNPickLocationVC.xib in Resources */,
 				46B2E5F9215C06EA00F81537 /* WNEventHeaderView.xib in Resources */,
 				4603C55D2150360C00C23E7A /* WNFavoritesVC.xib in Resources */,
 				46885B0B218F24D700F487A8 /* WNSplashVC.xib in Resources */,
@@ -621,6 +628,7 @@
 				46B2E5F8215C06EA00F81537 /* WNEventHeaderView.swift in Sources */,
 				4601DC84214EAD8D00DE7CCC /* WNEventsCollectionView.swift in Sources */,
 				46B2E5FF215C1AE800F81537 /* WNLocationController.swift in Sources */,
+				46885B0E218F3DF900F487A8 /* WNPickLocationVC.swift in Sources */,
 				4603C54E215032C200C23E7A /* WNTabBarController.swift in Sources */,
 				4601DC78214EA82500DE7CCC /* WNEventsVC.swift in Sources */,
 				4601DC66214EA67500DE7CCC /* WNPagination.swift in Sources */,
@@ -780,7 +788,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC3CDPK7H2;
 				INFOPLIST_FILE = WhatsNow/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dabdeveloper.WhatsNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -797,7 +808,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WC3CDPK7H2;
 				INFOPLIST_FILE = WhatsNow/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dabdeveloper.WhatsNow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

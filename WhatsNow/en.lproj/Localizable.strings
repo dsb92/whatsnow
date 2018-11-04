@@ -29,3 +29,7 @@
 "no_events_message" = "For \"X\"";
 "launchscreen_title" = "WhatsNow";
 "launchscreen_message" = "- Events nearby";
+"pick_location_where_go_out_title" = "Where do you go out?";
+"pick_location_where_go_out_message" = "We'll show you what's good near you";
+"pick_location_city" = "Pick a city";
+"pick_location_use_current" = "Use my current location";

@@ -24,7 +24,7 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate {
         self.setupTabBar()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = self.tabBarCon
+        self.window?.rootViewController = WNPickLocationVC()
         self.window?.makeKeyAndVisible()
         
         self.showSplash()
