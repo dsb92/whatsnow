@@ -13,7 +13,7 @@ class WNPickLocationVC: WNBaseVC {
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var pickCityButton: WNGradientButton!
-    @IBOutlet weak var useCurrentLocationButton: UIButton!
+    @IBOutlet weak var useCurrentLocationButton: WNMyLocationButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +36,14 @@ class WNPickLocationVC: WNBaseVC {
         self.pickCityButton.setGradient(withColors: WNFormatUtil.themeGradient())
         self.pickCityButton.setTitle("pick_location_city".localized, for: .normal)
         self.pickCityButton.setTitleColor(UIColor.white, for: .normal)
-        
-        self.useCurrentLocationButton.setTitle("pick_location_use_current".localized, for: .normal)
-        self.useCurrentLocationButton.setTitleColor(UIColor.black, for: .normal)
-        self.useCurrentLocationButton.tintColor = UIColor.black
-        self.useCurrentLocationButton.setImage(UIImage(named: "icon_my_location_black.png"), for: .normal)
     }
     
     @IBAction func didTapPickCityButton(_ sender: Any) {
+        let pickCity: WNPickCityVC = WNPickCityVC()
+        self.present(pickCity, animated: true, completion: nil)
     }
     
     @IBAction func didTapUseCurrentLocation(_ sender: Any) {
+        
     }
 }

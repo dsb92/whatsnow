@@ -56,7 +56,7 @@
                         <action selector="didTapPickCityButton:" destination="-1" eventType="touchUpInside" id="WuF-TB-PGK"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZN-n5-t10">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ZN-n5-t10" customClass="WNMyLocationButton" customModule="WhatsNow" customModuleProvider="target">
                     <rect key="frame" x="93" y="587" width="189" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="0V4-AD-KNb"/>
@@ -65,7 +65,7 @@
                     <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <state key="normal" title="Use my current location" image="icon_my_location_black"/>
                     <connections>
-                        <action selector="didTapUseCurrentLocation:" destination="-1" eventType="touchUpInside" id="Xxh-XB-HU9"/>
+                        <action selector="didTapUseCurrentLocation:" destination="-1" eventType="touchUpInside" id="Ort-ed-5V1"/>
                     </connections>
                 </button>
             </subviews>
