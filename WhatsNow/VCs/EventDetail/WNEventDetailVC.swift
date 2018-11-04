@@ -119,27 +119,27 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.locationIcon.image = #imageLiteral(resourceName: "icon_location_pin_black")
         self.ticketIcon.image = #imageLiteral(resourceName: "icon_ticket_black")
         
-        self.startDateLabel.font = UIFont.systemFont(ofSize: 16)
+        self.startDateLabel.font = WNFormatUtil.regularFont(ofSize: 16)
         self.startDateLabel.textColor = UIColor.black
         self.startDateLabel.text = WNFormatUtil.formatDate(event.start?.utc ?? "")
         
-        self.timeLabel.font = UIFont.systemFont(ofSize: 16)
+        self.timeLabel.font = WNFormatUtil.regularFont(ofSize: 16)
         self.timeLabel.textColor = UIColor.lightGray
         self.timeLabel.text = WNFormatUtil.formatTime(event.start?.utc ?? "") + " - " + WNFormatUtil.formatTime(event.end?.utc ?? "")
         
-        self.locationNameLabel.font = UIFont.systemFont(ofSize: 16)
+        self.locationNameLabel.font = WNFormatUtil.regularFont(ofSize: 16)
         self.locationNameLabel.textColor = UIColor.black
         self.locationNameLabel.text = event.venue?.name
         
-        self.locationAddressLabel.font = UIFont.systemFont(ofSize: 16)
+        self.locationAddressLabel.font = WNFormatUtil.regularFont(ofSize: 16)
         self.locationAddressLabel.textColor = UIColor.lightGray
         self.locationAddressLabel.text = event.venue?.address?.localizedAddressDisplay
         
-        self.ticketLabel.font = UIFont.systemFont(ofSize: 16)
+        self.ticketLabel.font = WNFormatUtil.regularFont(ofSize: 16)
         self.ticketLabel.textColor = UIColor.black
         self.ticketLabel.text = "free".localized
         
-        self.ticketMasterLabel.font = UIFont.systemFont(ofSize: 16)
+        self.ticketMasterLabel.font = WNFormatUtil.regularFont(ofSize: 16)
         self.ticketMasterLabel.textColor = UIColor.lightGray
         self.ticketMasterLabel.text = "ticket_master_eventbrite".localized
         
@@ -158,11 +158,11 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.readMoreButton.titleLabel?.text = "read_more_button"
         
         self.locationSnapShotLabel.text = "location_label".localized
-        self.locationSnapShotLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        self.locationSnapShotLabel.font = WNFormatUtil.mediumFont(ofSize: 20)
         self.locationSnapShotLabel.textColor = .black
         
         self.locationSnapShotNameLabel.text = event.venue?.name
-        self.locationSnapShotNameLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        self.locationSnapShotNameLabel.font = WNFormatUtil.regularFont(ofSize: 16)
         self.locationSnapShotNameLabel.textColor = .lightGray
         
         self.locationSnapShotImageView.contentMode = .scaleAspectFit
@@ -172,7 +172,7 @@ class WNEventDetailVC: WNBaseVC, UIScrollViewDelegate, UIGestureRecognizerDelega
         self.locationSnapShotImageView.addGestureRecognizer(tapGesture)
         
         self.eventsLikeThisLabel.text = "events_like_this".localized
-        self.eventsLikeThisLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        self.eventsLikeThisLabel.font = WNFormatUtil.mediumFont(ofSize: 20)
         self.eventsLikeThisLabel.textColor = .black
         
         self.eventsLikeThisCollectionView.eventsCollectionViewDelegate = self

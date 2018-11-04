@@ -14,7 +14,7 @@ class WNEventHeaderView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.sectionHeaderLabel.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        self.sectionHeaderLabel.font = WNFormatUtil.boldFont(ofSize: 25)
         self.sectionHeaderLabel.textColor = UIColor.black
     }
 }

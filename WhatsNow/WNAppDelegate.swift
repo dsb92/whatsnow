@@ -9,11 +9,12 @@
 import UIKit
 
 @UIApplicationMain
-class WNAppDelegate: UIResponder, UIApplicationDelegate {
+class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate {
 
     var window: UIWindow?
 
     let tabBarCon: WNTabBarController = WNTabBarController()
+    let splashVc: WNSplashVC = WNSplashVC()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -26,11 +27,12 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = self.tabBarCon
         self.window?.makeKeyAndVisible()
         
+        self.showSplash()
+        
         return true
     }
     
     func setupAppearance() {
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         // Sets shadow (line below the bar) to a blank image
         UINavigationBar.appearance().shadowImage = UIImage()
         // Sets the translucent background color
@@ -84,6 +86,30 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupTracking() {
         
+    }
+    
+    func showSplash() {
+        self.splashVc.delegate = self
+        self.window?.addSubview(self.splashVc.view)
+        
+        self.splashVc.view.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func hideSplash() {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.splashVc.view.alpha = 0.0
+        }) { (completed: Bool) in
+            if completed {
+                self.splashVc.view.removeFromSuperview()
+            }
+        }
+    }
+    
+    // MARK: - WNSplashVCDelegate
+    func splashVcDidFinishPresenting(_ sender: WNSplashVC) {
+        self.hideSplash()
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

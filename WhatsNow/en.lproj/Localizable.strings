@@ -27,3 +27,5 @@
 "no_results_message" = "For \"X\"";
 "no_events_title" = "No events found";
 "no_events_message" = "For \"X\"";
+"launchscreen_title" = "WhatsNow";
+"launchscreen_message" = "- Events nearby";

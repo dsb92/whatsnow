@@ -48,7 +48,7 @@ class WNCardView: UIView {
     func commonInit() {
         clipsToBounds = true
         
-        self.titleLabel.font = UIFont.systemFont(ofSize: 42, weight: .semibold)
+        self.titleLabel.font = WNFormatUtil.semiBoldFont(ofSize: 42)
         self.titleLabel.clipsToBounds = false
         self.titleLabel.adjustsFontSizeToFitWidth = true
         self.titleLabel.minimumScaleFactor = 0.5
@@ -57,7 +57,7 @@ class WNCardView: UIView {
         self.titleLabel.textColor = UIColor.black
         self.titleLabel.sizeToFit()
         
-        self.subtitleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        self.subtitleLabel.font = WNFormatUtil.semiBoldFont(ofSize: 17)
         self.subtitleLabel.clipsToBounds = false
         self.subtitleLabel.numberOfLines = 1
         self.subtitleLabel.lineBreakMode = .byTruncatingTail
@@ -76,7 +76,7 @@ class WNCardView: UIView {
         self.closeButton.setImage(#imageLiteral(resourceName: "ic_close.png").withRenderingMode(.alwaysTemplate), for: .normal)
         self.closeButton.imageView?.tintColor = UIColor.white.withAlphaComponent(0.8)
         self.closeButton.addTarget(self, action: #selector(self.didTapCloseButton), for: .touchUpInside)
-        self.closeButton.layer.cornerRadius = closeButton.bounds.size.width/2.0
+        self.closeButton.layer.cornerRadius = self.closeButton.bounds.size.width/2.0
         self.closeButton.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
         self.imageView.contentMode = .scaleAspectFill

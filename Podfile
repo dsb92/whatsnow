@@ -10,4 +10,5 @@ target 'WhatsNow' do
     pod 'SnapKit'
     pod 'SDWebImage'
     pod 'ALThreeCircleSpinner'
+    pod 'LTMorphingLabel'
 end

@@ -10,6 +10,23 @@ import UIKit
 
 class WNFormatUtil {
     
+    // MARK: - Fonts
+    static func boldFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .bold)
+    }
+    
+    static func semiBoldFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .semibold)
+    }
+    
+    static func mediumFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size, weight: .medium)
+    }
+    
+    static func regularFont(ofSize size: CGFloat) -> UIFont {
+        return UIFont.systemFont(ofSize: size)
+    }
+    
     // MARK: - Gradients
     static func themeGradient() -> [UIColor] {
         let topGradient: UIColor = self.themeColorLightBlue()

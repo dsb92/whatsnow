@@ -55,6 +55,7 @@ class WNBaseVC: UIViewController {
     
     func setupUI() {
         self.view.backgroundColor = .white
+        self.navigationController?.view.backgroundColor = .white
     }
     
     func presentEventDetail(withEvent event: WNEvent) {
