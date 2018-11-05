@@ -24,24 +24,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="4yt-b9-GaJ">
-                    <rect key="frame" x="16" y="30" width="189" height="110"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="4yt-b9-GaJ">
+                    <rect key="frame" x="16" y="30" width="343" height="126"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofp-gK-40H" customClass="WNCloseButton" customModule="WhatsNow" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                            <state key="normal" title="Button"/>
+                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                             <connections>
                                 <action selector="didTapCloseButton:" destination="-1" eventType="touchUpInside" id="B2R-mA-8Pe"/>
                             </connections>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Where" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3uL-ZP-ufJ">
-                            <rect key="frame" x="0.0" y="41" width="81" height="33"/>
+                            <rect key="frame" x="0.0" y="49" width="343" height="33"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                            <connections>
+                                <action selector="whereTextFieldEditingChanged:" destination="-1" eventType="editingChanged" id="hAc-Bs-arf"/>
+                            </connections>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmL-gD-WMI" customClass="WNMyLocationButton" customModule="WhatsNow" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="85" width="189" height="25"/>
+                            <rect key="frame" x="0.0" y="101" width="189" height="25"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="Use my current location" image="icon_my_location_black"/>
@@ -50,21 +52,24 @@
                             </connections>
                         </button>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="3uL-ZP-ufJ" firstAttribute="width" secondItem="4yt-b9-GaJ" secondAttribute="width" id="bbE-vq-M0b"/>
+                    </constraints>
                 </stackView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DXk-HK-apo">
-                    <rect key="frame" x="0.0" y="148" width="375" height="519"/>
+                    <rect key="frame" x="0.0" y="172" width="375" height="495"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DXk-HK-apo" secondAttribute="bottom" id="2FD-ur-mZj"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4yt-b9-GaJ" secondAttribute="trailing" constant="16" id="6Pc-3u-waL"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4yt-b9-GaJ" secondAttribute="trailing" constant="16" id="6Pc-3u-waL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DXk-HK-apo" secondAttribute="trailing" id="8CB-eN-pV0"/>
                 <constraint firstItem="DXk-HK-apo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bkz-6B-ZxE"/>
                 <constraint firstItem="4yt-b9-GaJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="KJk-VH-u8S"/>
                 <constraint firstItem="4yt-b9-GaJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="Mh2-gX-WQJ"/>
-                <constraint firstItem="DXk-HK-apo" firstAttribute="top" secondItem="4yt-b9-GaJ" secondAttribute="bottom" constant="8" id="RIP-sW-hiz"/>
+                <constraint firstItem="DXk-HK-apo" firstAttribute="top" secondItem="4yt-b9-GaJ" secondAttribute="bottom" constant="16" id="RIP-sW-hiz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>

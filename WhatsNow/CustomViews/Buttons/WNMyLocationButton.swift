@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WNMyLocationButton: UIButton {
+class WNMyLocationButton: WNButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -21,7 +21,9 @@ class WNMyLocationButton: UIButton {
         self.commonInit()
     }
     
-    func commonInit() {
+    override func commonInit() {
+        super.commonInit()
+        
         self.setTitle("pick_location_use_current".localized, for: .normal)
         self.setTitleColor(UIColor.black, for: .normal)
         self.tintColor = UIColor.black

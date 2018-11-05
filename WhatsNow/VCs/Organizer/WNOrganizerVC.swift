@@ -13,7 +13,6 @@ class WNOrganizerVC: WNEventsVC {
     var event: WNEvent?
     
     override func viewDidLoad() {
-        self.requestMyLocation = false
         super.viewDidLoad()
         
         guard let event: WNEvent = self.event else { return }

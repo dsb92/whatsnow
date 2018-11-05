@@ -9,12 +9,18 @@
 import UIKit
 
 @UIApplicationMain
-class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate {
+class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate, WNPickLocationVCDelegate {
 
     var window: UIWindow?
 
     let tabBarCon: WNTabBarController = WNTabBarController()
     let splashVc: WNSplashVC = WNSplashVC()
+    lazy var pickLocationVc: WNPickLocationVC = {
+        return WNPickLocationVC(delegate: self)
+    }()
+    let eventsVc = WNEventsVC()
+    
+    var launchBeforeKey: String = "launchedBeforeKey"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -24,7 +30,7 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate {
         self.setupTabBar()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = WNPickLocationVC()
+        self.window?.rootViewController = self.tabBarCon
         self.window?.makeKeyAndVisible()
         
         self.showSplash()
@@ -33,6 +39,8 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate {
     }
     
     func setupAppearance() {
+        self.window?.tintColor = WNFormatUtil.themeColorBlue()
+        
         // Sets shadow (line below the bar) to a blank image
         UINavigationBar.appearance().shadowImage = UIImage()
         // Sets the translucent background color
@@ -51,10 +59,9 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate {
     }
     
     func setupTabBar() {
-        let eventsVc = WNEventsVC()
         let eventsNavCon = UINavigationController(rootViewController: eventsVc)
-        eventsVc.tabBarItem = UITabBarItem(title: "home".localized, image: UIImage(named: "icon_home_outline_black.png"), selectedImage: UIImage(named: "icon_home_filled_black.png"))
-        eventsVc.tabBarItem.tabBarItemShowingOnlyImage()
+        self.eventsVc.tabBarItem = UITabBarItem(title: "home".localized, image: UIImage(named: "icon_home_outline_black.png"), selectedImage: UIImage(named: "icon_home_filled_black.png"))
+        self.eventsVc.tabBarItem.tabBarItemShowingOnlyImage()
         eventsNavCon.navigationBar.prefersLargeTitles = true
         
         let searchVc = WNSearchVC()
@@ -90,8 +97,8 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate {
     
     func showSplash() {
         self.splashVc.delegate = self
-        self.window?.addSubview(self.splashVc.view)
         
+        self.window?.addSubview(self.splashVc.view)
         self.splashVc.view.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -107,8 +114,33 @@ class WNAppDelegate: UIResponder, UIApplicationDelegate, WNSplashVCDelegate {
         }
     }
     
+    func showIntro() {
+        self.pickLocationVc.modalPresentationStyle = .fullScreen
+        self.pickLocationVc.modalTransitionStyle = .flipHorizontal
+        self.window?.rootViewController?.present(self.pickLocationVc, animated: false, completion: nil)
+    }
+    
+    func hideIntro() {
+        self.tabBarCon.statusBarStyle = .default
+        
+        self.pickLocationVc.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - WNPickLocationVCDelegate
+    func pickLocationVcDidPickLocation(_ sender: WNPickLocationVC, pickedLocation: String) {
+        self.hideIntro()
+        self.eventsVc.cityForCurrentEvents = pickedLocation
+    }
+    
     // MARK: - WNSplashVCDelegate
     func splashVcDidFinishPresenting(_ sender: WNSplashVC) {
+//        let launchedBefore: Bool = UserDefaults.standard.bool(forKey: self.launchBeforeKey)
+//
+//        if !launchedBefore {
+//            self.showIntro()
+//        }
+        
+        self.showIntro()
         self.hideSplash()
     }
 

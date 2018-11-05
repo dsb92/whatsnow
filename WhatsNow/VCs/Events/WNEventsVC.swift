@@ -32,11 +32,11 @@ class WNEventsVC: WNBaseVC {
     var cityForCurrentEvents: String = String() {
         didSet {
             self.title = self.cityForCurrentEvents
+            self.progressSpinner.startAnimating()
+            self.dataCon.searchEvents(fromAddress: self.cityForCurrentEvents)
             self.noResultsView.sublabel.text = "no_events_message".localized.replacingOccurrences(of: "X", with: self.cityForCurrentEvents)
         }
     }
-    
-    var requestMyLocation: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +47,12 @@ class WNEventsVC: WNBaseVC {
         self.eventCollectionView.eventsCollectionViewScrollViewDelegate = self
         self.eventCollectionView.delaysContentTouches = false
         
-        if self.requestMyLocation {
-            self.locCon.requestMyLocation()
+        if !self.cityForCurrentEvents.isEmpty {
             self.locCon.delegate = self
+            self.locCon.startLocateMe()
         }
-    }    
+    }
+    
     override func setupUI() {
         super.setupUI()
         
@@ -166,8 +167,6 @@ class WNEventsVC: WNBaseVC {
 extension WNEventsVC: WNLocationControllerDelegate {
     func locationControllerDidChangeCity(_ sender: WNLocationController, city: String) {
         if city.lowercased() != self.cityForCurrentEvents.lowercased() {
-            self.progressSpinner.startAnimating()
-            self.dataCon.searchEvents(fromAddress: city)
             self.cityForCurrentEvents = city
         }
     }

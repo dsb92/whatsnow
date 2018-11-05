@@ -32,6 +32,12 @@ class WNBaseVC: UIViewController {
             return progressSpinner
     }()
     
+    var statusBarStyle: UIStatusBarStyle = .default {
+        didSet {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +54,10 @@ class WNBaseVC: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.statusBarStyle
     }
     
     func assignDelegates() {

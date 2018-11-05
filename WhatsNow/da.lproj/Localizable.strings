@@ -33,3 +33,6 @@
 "pick_location_where_go_out_message" = "Vi viser dig hvad der er nær dig";
 "pick_location_city" = "Vælg en by";
 "pick_location_use_current" = "Brug min nuværende lokation";
+"pick_location_popular_locations" = "Populære lokationer";
+"pick_location_found_locations" = "Fundet lokationer";
+"pick_location_where_placeholder" = "Hvor?";

@@ -10,7 +10,21 @@ import UIKit
 
 class WNTabBarController: UITabBarController {
 
+    var statusBarStyle: UIStatusBarStyle = .lightContent {
+        didSet {
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.statusBarStyle
+    }
+    
+    override var childViewControllerForStatusBarStyle: UIViewController? {
+        return nil
     }
 }

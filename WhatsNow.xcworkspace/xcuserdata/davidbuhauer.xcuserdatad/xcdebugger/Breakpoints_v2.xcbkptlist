@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WhatsNow/VCs/Splash/WNSplashVC.swift"
-            timestampString = "563035399.4825"
+            filePath = "WhatsNow/WNAppDelegate.swift"
+            timestampString = "563126228.383136"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "morphingDidComplete(_:)"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "pickLocationVcDidPickLocation(_:pickedLocation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

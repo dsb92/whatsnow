@@ -33,3 +33,6 @@
 "pick_location_where_go_out_message" = "We'll show you what's good near you";
 "pick_location_city" = "Pick a city";
 "pick_location_use_current" = "Use my current location";
+"pick_location_popular_locations" = "Popular Locations";
+"pick_location_found_locations" = "Found Locations";
+"pick_location_where_placeholder" = "Where?";

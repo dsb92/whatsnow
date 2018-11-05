@@ -34,14 +34,16 @@ class WNLocationController: NSObject {
     func requestMyLocation() {
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.locationManager.delegate = self
+        self.startLocateMe()
     }
     
-    private func startLocateMe() {
+    func startLocateMe() {
         self.locationManager.startUpdatingLocation()
     }
     
-    private func stopLocateMe() {
+    func stopLocateMe() {
         self.locationManager.stopUpdatingLocation()
     }
 }
@@ -81,5 +83,9 @@ extension WNLocationController: CLLocationManagerDelegate {
                 self.delegate?.locationControllerDidChangeCity(self, city: postAddress.city)
             }
         }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Error location: \(error.localizedDescription)")
     }
 }

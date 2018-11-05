@@ -20,6 +20,8 @@ class WNSplashVC: WNBaseVC {
     weak var delegate: WNSplashVCDelegate?
     
     override func viewDidLoad() {
+        self.statusBarStyle = .lightContent
+        
         super.viewDidLoad()
     }
     
